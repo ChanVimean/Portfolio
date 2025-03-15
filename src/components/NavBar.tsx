@@ -15,7 +15,7 @@ const NavBar = () => {
         <h1 className="font-semibold text-4xl">Rok Rak Dev</h1>
       </section>
 
-      <section className={`${theme === "light" ? "bg-[var(--theme-200)]"
+      <section className={`${theme === "light" ? "bg-[var(--theme-100)]"
                            : "bg-[var(--theme-100"}
                            px-4 py-2 rounded-md shadow-md`}
       >
@@ -44,13 +44,13 @@ const NavBar = () => {
       </section>
 
       <section className="flex space-x-2">
-        <button className="flex border-2 px-2 rounded-md space-x-2 items-center">
+        <button className="flex bg-[var(--theme-100)] border-2 px-2 rounded-md space-x-2 items-center cursor-pointer">
           <PiWaveformLight  />
           <span>Music</span>
         </button>
         <button
           onClick={toggleTheme}
-          className="flex border-2 px-2 rounded-md space-x-2 items-center"
+          className="flex border-2 px-2 rounded-md space-x-2 items-center cursor-pointer"
         >
           { theme === "light" ? <GiIceCube className="text-blue-400" /> : <FaStar className="text-yellow-300" />}
           <span>Theme</span>
