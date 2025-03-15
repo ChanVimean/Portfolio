@@ -1,11 +1,14 @@
-import ThemeToggle from "./components/ThemeToggle"
+import NavBar from "./components/NavBar"
 
 
 const App = () => {
   return (
     <>
-     <h1 className="text-[var(--theme-500)]">Hello</h1>
-     <ThemeToggle />
+      <nav>
+        <NavBar />
+      </nav>
+      <main></main>
+
     </>
   )
 }

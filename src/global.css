@@ -1,4 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
 @import "tailwindcss";
+
 
 /* * Main <Light> Glacier Blue Theme * */
 :root {
@@ -7,6 +9,8 @@
   --theme-300: #BBAAFF;
   --theme-200: #B6CFFF;
   --theme-100: #F2FDFF;
+
+  --bg-image: url("/Ocean-blue.avif")
 }
 
 /* * <Dark> Spacce Stars Theme * */
@@ -16,9 +20,15 @@
   --theme-300: #B4FAAC;
   --theme-200: #4A4360;
   --theme-100: #3A3852;
+
+  --bg-image: url("")
 }
 
 body {
-  background-color: var(--theme-100);
-  color: var(--theme-100);
+  background: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--theme-500);
+  font-family: "Space Grotesk", sans-serif;
 }
