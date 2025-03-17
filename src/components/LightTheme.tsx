@@ -10,19 +10,6 @@ const isWeakDevice = () => {
   // ! Optimize: Disable Weak Device
   if (window.matchMedia("(max-width: 768px)").matches) return true
 
-  // ! Optimize: Check WebGl capabilities
-  const canvas = document.createElement("canvas")
-  const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl")
-  if (!gl) return true
-
-  const debugInfo = gl.getExtension("WEBGL_debug_renderer_info") as any
-  if (debugInfo) {
-    const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) as String
-    if (renderer.includes("SwiftShader") || renderer.includes("llvmpipe") || renderer.includes("Mesa")) {
-      return true
-    }
-  }
-  return false
 }
 
 
