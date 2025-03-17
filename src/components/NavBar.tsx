@@ -1,22 +1,27 @@
-import { FaStar } from "react-icons/fa"
-import { PiWaveformLight } from "react-icons/pi"
-import { useTheme } from "../context/AppContext"
+import { FaStar } from "react-icons/fa";
+import { PiWaveformLight } from "react-icons/pi";
+import { useTheme } from "../context/AppContext";
+import { GiIceCube } from "react-icons/gi";
+import LightTheme from "./LightTheme";
 
-import { GiIceCube } from "react-icons/gi"
+
 
 const NavBar = () => {
-
-  const { theme, toggleTheme } = useTheme()
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <nav className="flex items-center w-screen px-4 py-2 text-2xl overflow-hidden justify-between">
+      {/* Background Light x Dark Theme */}
+      <LightTheme />
 
       <section>
         <h1 className="font-semibold text-4xl">Rok Rak Dev</h1>
       </section>
 
-      <section className={`${theme === "light" ? "bg-[var(--theme-100)]"
-                           : "bg-[var(--theme-100"}
+      <section
+        className={`${
+          theme === "light" ? "bg-[var(--theme-100)]" : "bg-[var(--theme-100"
+        }
                            px-4 py-2 rounded-md shadow-md`}
       >
         <ul className="flex space-x-4 font-medium items-center">
@@ -45,20 +50,23 @@ const NavBar = () => {
 
       <section className="flex space-x-2">
         <button className="flex bg-[var(--theme-100)] border-2 px-2 rounded-md space-x-2 items-center cursor-pointer">
-          <PiWaveformLight  />
+          <PiWaveformLight />
           <span>Music</span>
         </button>
         <button
           onClick={toggleTheme}
           className="flex border-2 px-2 rounded-md space-x-2 items-center cursor-pointer"
         >
-          { theme === "light" ? <GiIceCube className="text-blue-400" /> : <FaStar className="text-yellow-300" />}
+          {theme === "light" ? (
+            <GiIceCube className="text-blue-400" />
+          ) : (
+            <FaStar className="text-yellow-300" />
+          )}
           <span>Theme</span>
         </button>
       </section>
-
     </nav>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

@@ -9,8 +9,6 @@
   --theme-300: #BBAAFF;
   --theme-200: #B6CFFF;
   --theme-100: #F2FDFF;
-
-  --bg-image: url("Blue-wallpaper.jpg")
 }
 
 /* * <Dark> Spacce Stars Theme * */
@@ -20,15 +18,9 @@
   --theme-300: #B4FAAC;
   --theme-200: #4A4360;
   --theme-100: #3A3852;
-
-  --bg-image: url("")
 }
 
 body {
-  background: var(--bg-image);
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
   color: var(--theme-500);
   font-family: "Space Grotesk", sans-serif;
 }
