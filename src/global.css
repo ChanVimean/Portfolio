@@ -2,25 +2,30 @@
 @import "tailwindcss";
 
 
-/* * Main <Light> Glacier Blue Theme * */
+/* ? Main <Light> Glacier Blue Theme */
 :root {
   --theme-500: #0E1836;
   --theme-400: #7BBBFE;
   --theme-300: #BBAAFF;
   --theme-200: #B6CFFF;
   --theme-100: #F2FDFF;
+
+  --background-image: url("Sky-blue.avif");
 }
 
-/* * <Dark> Spacce Stars Theme * */
+/* ? <Dark> Spacce Stars Theme */
 [data-theme="dark"] {
   --theme-500: #FEFEFC;
   --theme-400: #AF8CF3;
   --theme-300: #B4FAAC;
   --theme-200: #4A4360;
   --theme-100: #3A3852;
+
+  --background-image: url("Space-stars.avif");
 }
 
 body {
+  background: var(--background-image) center/cover no-repeat fixed;
   color: var(--theme-500);
   font-family: "Space Grotesk", sans-serif;
 }
