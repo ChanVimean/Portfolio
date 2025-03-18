@@ -5,9 +5,10 @@ import { AiFillProduct } from "react-icons/ai"
 interface BottomBarProps {
   sections: string[]
   theme: "light" | "dark"
+  handleScroll: (index: number) => void
 }
 
-const BottomBar: React.FC<BottomBarProps> = ({sections, theme}) => {
+const BottomBar: React.FC<BottomBarProps> = ({sections, theme, handleScroll}) => {
 
   const icons = [HiMiniHome, BiSolidInfoSquare, AiFillProduct, BiSolidContact, HiMiniDocumentText]
 
@@ -20,7 +21,11 @@ const BottomBar: React.FC<BottomBarProps> = ({sections, theme}) => {
           sections.map((section, index) => {
             const IconComponent = icons[index]
             return (
-              <li key={section} className="flex flex-col items-center">
+              <li
+                key={section}
+                className="flex flex-col items-center"
+                onClick={() => handleScroll(index)}
+              >
                 <IconComponent className="text-4xl" />
                 <span className="text-md font-medium mt-1">{section}</span>
               </li>

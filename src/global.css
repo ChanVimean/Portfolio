@@ -28,4 +28,15 @@ body {
   background: var(--background-image) center/cover no-repeat fixed;
   color: var(--theme-500);
   font-family: "Space Grotesk", sans-serif;
+  overflow: hidden;
+}
+
+/* ? Force to Hide Scroll Bar */
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

@@ -1,12 +1,11 @@
-
-
 interface DotNavProps {
   sections: string[]
   theme: "light" | "dark"
-  // onDotClick: (index: number) => void
+  activeIndex: number // ? Track Active Section
+  handleScroll: (index: number) => void
 }
 
-const Dotted: React.FC<DotNavProps> = ({ sections, theme }) => {
+const Dotted: React.FC<DotNavProps> = ({ sections, theme, activeIndex, handleScroll }) => {
   return (
     <>
       {/* Mobile: Vertical Dashed Navigation */}
@@ -15,10 +14,10 @@ const Dotted: React.FC<DotNavProps> = ({ sections, theme }) => {
           sections.map((_, index) => (
             <button
               key={index}
-              // onClick={() => onDotClick(index)}
-              className={`w-1 h-6 rounded-full transition-all 
+              onClick={() => handleScroll(index)}
+              className={`w-1 h-6 rounded-full transition-all
                 ${
-                  index === 0
+                  index === activeIndex
                     ? `scale-125 ${theme === "light" ? "bg-[var(--theme-400)]" : "bg-[var(--theme-300)]"}`
                     : "bg-[var(--theme-500)] opacity-40 hover:opacity-60"
                 }`}
@@ -33,10 +32,10 @@ const Dotted: React.FC<DotNavProps> = ({ sections, theme }) => {
         {sections.map((_, index) => (
           <button
             key={index}
-            // onClick={() => onDotClick(index)}
+            onClick={() => handleScroll(index)}
             className={`w-5 h-5 rounded-full transition-all 
               ${
-                index === 0
+                index === activeIndex
                   ? `scale-125 ${theme === "light" ? "bg-[var(--theme-400)]" : "bg-[var(--theme-300)]"}`
                   : "bg-[var(--theme-500)] opacity-40 hover:opacity-60"
               }`}
