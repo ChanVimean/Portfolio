@@ -6,10 +6,11 @@ interface NavBarProps {
   sections: string[]
   theme: "light" | "dark"
   toggleTheme: () => void
+  handleScroll: (index: number) => void
 }
 
 
-const NavBar: React.FC<NavBarProps> = ({sections, theme, toggleTheme}) => {
+const NavBar: React.FC<NavBarProps> = ({sections, theme, toggleTheme, handleScroll}) => {
 
   return (
     <nav className="flex items-center w-screen px-4 py-2 md:px-8 md:py-4 text-2xl overflow-hidden justify-between">
@@ -24,9 +25,9 @@ const NavBar: React.FC<NavBarProps> = ({sections, theme, toggleTheme}) => {
       >
         <ul className="flex space-x-4 font-medium items-center">
           {
-            sections.map(section => (
+            sections.map((section, index) => (
               <li key={section}>
-                <button>{section}</button>
+                <button onClick={() => handleScroll(index)}>{section}</button>
               </li>
             ))
           }
