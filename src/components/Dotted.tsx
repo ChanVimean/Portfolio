@@ -9,7 +9,7 @@ const Dotted: React.FC<DotNavProps> = ({ sections, theme, activeIndex, handleScr
   return (
     <>
       {/* Mobile: Vertical Dashed Navigation */}
-      <section className="fixed lg:hidden right-3 top-1/2 transform -translate-y-1/2 flex flex-col space-y-2">
+      <section className="fixed lg:hidden right-1 top-1/2 transform -translate-y-1/2 flex flex-col space-y-2">
         {
           sections.map((_, index) => (
             <button

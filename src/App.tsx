@@ -28,12 +28,12 @@ const App:React.FC = () => {
   const mainRef = useRef<HTMLDivElement>(null)
 
   const sections = useMemo<Section[]>(() => [
-    { name: "Home", component: <Home />},
+    { name: "Home", component: <Home theme={theme} />},
     { name: "About", component: <About />},
     { name: "Projects", component: <Projects />},
     { name: "Contact", component: <Contact />},
     { name: "Resume", component: <Resume />}
-  ], [])
+  ], [theme])
 
   // ? Handle Window Resize for Mobile Detection
   useEffect(() => {
