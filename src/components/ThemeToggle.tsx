@@ -1,22 +1,21 @@
-import { useTheme } from "../context/AppContext"
+import { useTheme } from "../hook/useTheme";
 
 const ThemeToggle = () => {
-
-  const { theme, toggleTheme } = useTheme()
+  const { theme, toggleTheme } = useTheme();
 
   const themeOptions = {
     light: { label: "🌙 Dark Mode" },
     dark: { label: "☀️ Light Mode" },
-  }
+  };
 
   return (
     <button
       onClick={toggleTheme}
       className={`p-3 rounded-md border-2 text-[var(--theme-500)] transition-all duration-300`}
     >
-      { themeOptions[theme].label }
+      {themeOptions[theme].label}
     </button>
-  )
-}
+  );
+};
 
-export default ThemeToggle
+export default ThemeToggle;
