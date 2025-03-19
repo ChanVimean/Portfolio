@@ -13,6 +13,10 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
+    document.body.style.backgroundImage =
+      theme === "light"
+        ? "url('Sky-blue-converted.jpg')"
+        : "url('space-stars-converted.jpg')"
     localStorage.setItem("theme", theme);
   }, [theme]);
 

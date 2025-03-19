@@ -9,8 +9,6 @@
   --theme-300: #BBAAFF;
   --theme-200: #B6CFFF;
   --theme-100: #F2FDFF;
-
-  --background-image: url("Sky-blue-converted.jpg");
 }
 
 /* ? <Dark> Spacce Stars Theme */
@@ -20,12 +18,10 @@
   --theme-300: #B4FAAC;
   --theme-200: #4A4360;
   --theme-100: #3A3852;
-
-  --background-image: url("space-stars-converted.jpg");
 }
 
 body {
-  background: var(--background-image) center/cover no-repeat fixed;
+  background: center/cover no-repeat fixed;
   color: var(--theme-500);
   font-family: "Space Grotesk", sans-serif;
   overflow: hidden;
