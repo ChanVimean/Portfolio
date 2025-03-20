@@ -298,18 +298,18 @@ const About:React.FC<AboutProps> = ({ theme }) => {
   const [activeSection, setActiveSection] = useState<"Education" | "Skills" | "Personal">("Personal")
 
   return (
-    <div className="w-screen h-screen flex flex-col lg:flex-row overflow-hidden py-28 lg:py-0">
-      <section className="w-full lg:w-1/3 h-1/5 lg:h-full">
+    <div className="w-screen h-screen flex flex-col lg:flex-row overflow-hidden pb-24 pt-14 lg:pb-0 lg:pt-0">
+      <section className="w-full lg:w-1/3 h-2/6 lg:h-full">
         <ProfileComponent theme={theme} activeSection={activeSection} setActiveSection={setActiveSection} />
       </section>
 
-      <section className="w-full lg:w-2/3 h-4/5 lg:h-full p-2 lg:p-36 space-y-6 flex flex-col items-start justify-center">
-        <div className="w-5/6 lg:w-full mx-auto flex justify-end md:justify-start">
-          <button className="text-xl lg:text-2xl font-semibold opacity-75">Skip</button>
+      <section className="w-full lg:w-2/3 h-4/6 lg:h-full p-2 lg:p-36 space-y-2 lg:space-y-6 flex flex-col items-start justify-center">
+        <div className="w-5/6 lg:w-full mx-auto">
+          <button className="text-lg lg:text-2xl font-semibold opacity-75">Skip</button>
         </div>
 
         <article className="w-full h-full flex-1 overflow-hidden lg:overflow-visible px-4 lg:px-0">
-          <div className="w-full h-full overflow-y-auto lg:overflow-y-hidden">
+          <div className="w-full h-full border-y border-[var(--theme-200)] py-2 overflow-y-auto lg:overflow-y-hidden">
             {activeSection === "Education" && <EducationComponent />}
             {activeSection === "Skills" && <SkillsComponent />}
             {activeSection === "Personal" && <PersonalComponent />}
