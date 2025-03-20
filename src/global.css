@@ -69,3 +69,29 @@ body {
 .underline-animation.active::after {
   animation: underline-expand 0.3s forwards;
 }
+
+
+/* ? Custom Scroll-Bar */
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 4px; /* TODO: Width for vertical scrollbar */
+  height: 4px; /* TODO: for horizontal scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--theme-200);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--theme-300);
+  border-radius: 10px;
+  transition: background 0.3s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-400);
+}

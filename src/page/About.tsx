@@ -2,6 +2,8 @@ import { useState } from "react"
 import { FaRegCirclePlay } from "react-icons/fa6"
 import { GhostButton, SkyButton, SpaceButton } from "../components/Buttons"
 
+
+
 interface AboutProps {
   theme: "light" | "dark"
 }
@@ -52,8 +54,8 @@ const ProfileComponent:React.FC<ProfileProps> = ({ theme, activeSection, setActi
                 ? "text-blue-700"
                 : "text-blue-500"
               : activeSection === "Education"
-                ? "text-[var(--theme-400)]"
-                : "text-[var(--theme-300)]"
+                ? "text-[var(--theme-300)]"
+                : "text-[var(--theme-400)]"
             }`}
         >
           Education
@@ -66,8 +68,8 @@ const ProfileComponent:React.FC<ProfileProps> = ({ theme, activeSection, setActi
                 ? "text-blue-700"
                 : "text-blue-500 hover:text-blue-500"
               : activeSection === "Skills"
-                ? "text-[var(--theme-400)]"
-                : "text-[var(--theme-300)]"
+                ? "text-[var(--theme-300)]"
+                : "text-[var(--theme-400)]"
             }`}
         >
           Skills
@@ -80,8 +82,8 @@ const ProfileComponent:React.FC<ProfileProps> = ({ theme, activeSection, setActi
                 ? "text-blue-700"
                 : "text-blue-500 hover:text-blue-500"
               : activeSection === "Personal"
-                ? "text-[var(--theme-400)]"
-                : "text-[var(--theme-300)]"
+                ? "text-[var(--theme-300)]"
+                : "text-[var(--theme-400)]"
             }`}
         >
           Personal
@@ -98,8 +100,8 @@ const PersonalComponent:React.FC<AboutProps> = ({ theme }) => {
     <div className={`w-full h-full space-y-8
       ${theme === "light" ? "text-[var(--theme-500)]" : "text-[var(--theme-300)]"}`}
     >
-      <article className="space-y-4 text-lg lg:text-xl">
-        <div className="flex items-center space-x-2 text-2xl lg:text-4xl font-semibold">
+      <article className="space-y-4 text-md md:text-lgg lg:text-xl">
+        <div className="flex items-center space-x-2 text-2xl lg:text-3xl font-semibold">
           <button>
             <FaRegCirclePlay />
           </button>
@@ -119,8 +121,8 @@ const PersonalComponent:React.FC<AboutProps> = ({ theme }) => {
         </p>
       </article>
 
-      <article className="space-y-4 text-lg lg:text-xl">
-        <div className="flex items-center space-x-2 text-2xl lg:text-4xl font-semibold">
+      <article className="space-y-4 text-md md:text-lg lg:text-xl">
+        <div className="flex items-center space-x-2 text-2xl lg:text-3xl font-semibold">
           <button>
             <FaRegCirclePlay />
           </button>
@@ -134,8 +136,8 @@ const PersonalComponent:React.FC<AboutProps> = ({ theme }) => {
         </ul>
       </article>
 
-      <article className="space-y-4 text-lg lg:text-xl">
-        <div className="flex items-center space-x-2 text-2xl lg:text-4xl font-semibold">
+      <article className="space-y-4 text-md md:text-lg lg:text-xl">
+        <div className="flex items-center space-x-2 text-2xl lg:text-3xl font-semibold">
           <button>
             <FaRegCirclePlay />
           </button>
@@ -158,8 +160,8 @@ const EducationComponent:React.FC<AboutProps> = ({ theme }) => {
     <div className={`w-full h-full space-y-8 text-[var(--theme-300)]
       ${theme === "light" ? "text-[var(--theme-500)]" : "text-[var(--theme-300)]"}`}
     >
-      <article className="space-y-4 text-lg lg:text-xl">
-        <div className="flex items-center space-x-2 text-2xl lg:text-4xl font-semibold">
+      <article className="space-y-4 text-md md:text-lg lg:text-xl">
+        <div className="flex items-center space-x-2 text-2xl lg:text-3xl font-semibold">
           <button>
             <FaRegCirclePlay />
           </button>
@@ -172,8 +174,8 @@ const EducationComponent:React.FC<AboutProps> = ({ theme }) => {
         </ul>
       </article>
 
-      <article className="space-y-4 text-lg lg:text-xl">
-        <div className="flex items-center space-x-2 text-2xl lg:text-4xl font-semibold">
+      <article className="space-y-4 text-md md:text-lg lg:text-xl">
+        <div className="flex items-center space-x-2 text-2xl lg:text-3xl font-semibold">
           <button>
             <FaRegCirclePlay />
           </button>
@@ -203,8 +205,8 @@ const EducationComponent:React.FC<AboutProps> = ({ theme }) => {
         </ul>
       </article>
 
-      <article className="space-y-4 text-lg lg:text-xl">
-        <div className="flex items-center space-x-2 text-2xl lg:text-4xl font-semibold">
+      <article className="space-y-4 text-md md:text-lg lg:text-xl">
+        <div className="flex items-center space-x-2 text-2xl lg:text-3xl font-semibold">
           <button>
             <FaRegCirclePlay />
           </button>
@@ -226,8 +228,8 @@ const SkillsComponent:React.FC<AboutProps> = ({ theme }) => {
     <div className={`w-full h-full space-y-8 text-[var(--theme-300)]
       ${theme === "light" ? "text-[var(--theme-500)]" : "text-[var(--theme-300)]"}`}
     >
-      <article className="space-y-4 text-lg lg:text-xl">
-        <div className="flex items-center space-x-2 text-2xl lg:text-4xl font-semibold">
+      <article className="space-y-4 text-md md:text-lg lg:text-xl">
+        <div className="flex items-center space-x-2 text-2xl lg:text-3xl font-semibold">
           <button>
             <FaRegCirclePlay />
           </button>
@@ -241,8 +243,8 @@ const SkillsComponent:React.FC<AboutProps> = ({ theme }) => {
         </ul>
       </article>
 
-      <article className="space-y-4 text-lg lg:text-xl">
-        <div className="flex items-center space-x-2 text-2xl lg:text-4xl font-semibold">
+      <article className="space-y-4 text-md md:text-lg lg:text-xl">
+        <div className="flex items-center space-x-2 text-2xl lg:text-3xl font-semibold">
           <button>
             <FaRegCirclePlay />
           </button>
@@ -268,8 +270,8 @@ const SkillsComponent:React.FC<AboutProps> = ({ theme }) => {
         </ul>
       </article>
 
-      <article className="space-y-4 text-lg lg:text-xl">
-        <div className="flex items-center space-x-2 text-2xl lg:text-4xl font-semibold">
+      <article className="space-y-4 text-md md:text-lg lg:text-xl">
+        <div className="flex items-center space-x-2 text-2xl lg:text-3xl font-semibold">
           <button>
             <FaRegCirclePlay />
           </button>
