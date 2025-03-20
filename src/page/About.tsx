@@ -30,7 +30,7 @@ const ProfileComponent:React.FC<ProfileProps> = ({ theme, activeSection, setActi
       </section>
 
       {/* Navigation Buttons on PC */}
-      <section className="hidden lg:flex space-x-4 font-semibold text-2xl">
+      <section className="hidden lg:flex space-x-4 font-semibold text-lg">
         <button onClick={() => setActiveSection("Education")}>
           <SpaceButton theme={theme} title={"Education"} />
         </button>
@@ -43,7 +43,7 @@ const ProfileComponent:React.FC<ProfileProps> = ({ theme, activeSection, setActi
       </section>
 
       {/* Navigation Buttons on Mobile x Tablet */}
-      <section className="flex justify-evenly w-5/6 space-x-4 md:space-x-8 text-lg md:text-2xl font-semibold border-b-2 pb-2 border-gray-500">
+      <section className="flex lg:hidden justify-evenly w-5/6 space-x-4 md:space-x-6 text-lg md:text-xl font-semibold border-b-2 pb-2 border-gray-500">
         <button
           onClick={() => setActiveSection("Education")}
           className={`duration-150 ease-in-out underline-animation
@@ -93,9 +93,11 @@ const ProfileComponent:React.FC<ProfileProps> = ({ theme, activeSection, setActi
 
 
 // ? Personal Component
-const PersonalComponent = () => {
+const PersonalComponent:React.FC<AboutProps> = ({ theme }) => {
   return (
-    <div className="w-full h-full space-y-8 text-[var(--theme-300)]">
+    <div className={`w-full h-full space-y-8
+      ${theme === "light" ? "text-[var(--theme-300)]" : "text-[var(--theme-500)]"}`}
+    >
       <article className="space-y-4 text-lg lg:text-xl">
         <div className="flex items-center space-x-2 text-2xl lg:text-4xl font-semibold">
           <button>
@@ -151,9 +153,11 @@ const PersonalComponent = () => {
 
 
 // ? Education Component
-const EducationComponent = () => {
+const EducationComponent:React.FC<AboutProps> = ({ theme }) => {
   return (
-    <div className="w-full h-full space-y-8 text-[var(--theme-300)]">
+    <div className={`w-full h-full space-y-8 text-[var(--theme-300)]
+      ${theme === "light" ? "text-[var(--theme-300)]" : "text-[var(--theme-500)]"}`}
+    >
       <article className="space-y-4 text-lg lg:text-xl">
         <div className="flex items-center space-x-2 text-2xl lg:text-4xl font-semibold">
           <button>
@@ -217,9 +221,11 @@ const EducationComponent = () => {
 
 
 // ? Skills Component
-const SkillsComponent = () => {
+const SkillsComponent:React.FC<AboutProps> = ({ theme }) => {
   return (
-    <div className="w-full h-full space-y-8 text-[var(--theme-300)]">
+    <div className={`w-full h-full space-y-8 text-[var(--theme-300)]
+      ${theme === "light" ? "text-[var(--theme-300)]" : "text-[var(--theme-500)]"}`}
+    >
       <article className="space-y-4 text-lg lg:text-xl">
         <div className="flex items-center space-x-2 text-2xl lg:text-4xl font-semibold">
           <button>
@@ -309,7 +315,7 @@ const About:React.FC<AboutProps> = ({ theme }) => {
         </div>
 
         <article className="w-full h-full flex-1 overflow-hidden lg:overflow-visible px-4 lg:px-0">
-          <div className="w-full h-full border-y border-[var(--theme-200)] py-2 overflow-y-auto lg:overflow-y-hidden">
+          <div className="w-full h-full border-y border-[var(--theme-200)] py-2 overflow-y-auto">
             {activeSection === "Education" && <EducationComponent />}
             {activeSection === "Skills" && <SkillsComponent />}
             {activeSection === "Personal" && <PersonalComponent />}
