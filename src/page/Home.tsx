@@ -6,7 +6,7 @@ interface HomeProps {
   theme: "light" | "dark"
 }
 
-// ? Support Component
+// ? HomeSection Component
 const HomeSection:React.FC<HomeProps> = ({ theme }) => {
   return (
     <main className="flex flex-col w-full h-full items-center lg:p-28">

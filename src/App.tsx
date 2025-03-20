@@ -27,7 +27,7 @@ const App: React.FC = () => {
   const sections = useMemo<Section[]>(
     () => [
       { name: "Home", component: <Home theme={theme} /> },
-      { name: "About", component: <About /> },
+      { name: "About", component: <About theme={theme} /> },
       { name: "Projects", component: <Projects /> },
       { name: "Contact", component: <Contact /> },
       { name: "Resume", component: <Resume /> },
