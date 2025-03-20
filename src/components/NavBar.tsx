@@ -13,10 +13,10 @@ interface NavBarProps {
 const NavBar: React.FC<NavBarProps> = ({sections, theme, toggleTheme, handleScroll}) => {
 
   return (
-    <nav className="flex items-center w-screen px-4 py-2 md:px-8 md:py-4 text-2xl overflow-hidden justify-between">
+    <nav className="flex items-center w-screen px-4 py-2 md:px-8 md:py-4 text-xl overflow-hidden justify-between">
 
       <section>
-        <h1 className="font-semibold text-2xl md:text-3xl lg:text-4xl">Rok Rak Dev</h1>
+        <h1 className="font-semibold text-lg md:text-2xl lg:text-3xl">Rok Rak Dev</h1>
       </section>
 
       <section

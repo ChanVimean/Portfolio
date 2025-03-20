@@ -14,7 +14,7 @@ const BottomBar: React.FC<BottomBarProps> = ({sections, theme, handleScroll}) =>
 
   return (
     <div className={`${theme === "light" ? "bg-[var(--theme-400)]" : "bg-[var(--theme-100)]"}
-                    fixed lg:hidden bottom-0 w-full px-6 py-4 md:px-12`}
+                    fixed lg:hidden bottom-0 w-full px-6 py-2 md:px-16`}
     >
       <ul className="flex justify-between space-x-3">
         {

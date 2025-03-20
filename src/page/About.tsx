@@ -95,7 +95,7 @@ const ProfileComponent:React.FC<ProfileProps> = ({ theme, activeSection, setActi
 // ? Personal Component
 const PersonalComponent = () => {
   return (
-    <div className="w-full h-full space-y-8 text-[var(--theme-400)]">
+    <div className="w-full h-full space-y-8 text-[var(--theme-300)]">
       <article className="space-y-4 text-lg lg:text-xl">
         <div className="flex items-center space-x-2 text-2xl lg:text-4xl font-semibold">
           <button>
@@ -219,7 +219,7 @@ const EducationComponent = () => {
 // ? Skills Component
 const SkillsComponent = () => {
   return (
-    <div className="w-full h-full space-y-8">
+    <div className="w-full h-full space-y-8 text-[var(--theme-300)]">
       <article className="space-y-4 text-lg lg:text-xl">
         <div className="flex items-center space-x-2 text-2xl lg:text-4xl font-semibold">
           <button>
