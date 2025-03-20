@@ -29,7 +29,7 @@ const App: React.FC = () => {
       { name: "Home", component: <Home theme={theme} /> },
       { name: "About", component: <About theme={theme} /> },
       { name: "Projects", component: <Projects /> },
-      { name: "Contact", component: <Contact theme={theme} /> },
+      { name: "Contact", component: <Contact /> },
       { name: "Resume", component: <Resume /> },
     ],
     [theme]

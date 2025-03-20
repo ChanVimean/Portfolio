@@ -57,7 +57,9 @@ const NavBar: React.FC<NavBarProps> = ({sections, theme, toggleTheme, handleScro
           ) : (
             <MdLightMode className="m-1 text-yellow-300" />
           )}
-          <span className="hidden lg:block">Theme</span>
+          <span className="hidden lg:block">
+            {theme === "light" ? <span>Dark</span> : <span>Light</span>}
+          </span>
         </button>
       </section>
 
