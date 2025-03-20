@@ -96,7 +96,7 @@ const ProfileComponent:React.FC<ProfileProps> = ({ theme, activeSection, setActi
 const PersonalComponent:React.FC<AboutProps> = ({ theme }) => {
   return (
     <div className={`w-full h-full space-y-8
-      ${theme === "light" ? "text-[var(--theme-300)]" : "text-[var(--theme-500)]"}`}
+      ${theme === "light" ? "text-[var(--theme-500)]" : "text-[var(--theme-300)]"}`}
     >
       <article className="space-y-4 text-lg lg:text-xl">
         <div className="flex items-center space-x-2 text-2xl lg:text-4xl font-semibold">
@@ -156,7 +156,7 @@ const PersonalComponent:React.FC<AboutProps> = ({ theme }) => {
 const EducationComponent:React.FC<AboutProps> = ({ theme }) => {
   return (
     <div className={`w-full h-full space-y-8 text-[var(--theme-300)]
-      ${theme === "light" ? "text-[var(--theme-300)]" : "text-[var(--theme-500)]"}`}
+      ${theme === "light" ? "text-[var(--theme-500)]" : "text-[var(--theme-300)]"}`}
     >
       <article className="space-y-4 text-lg lg:text-xl">
         <div className="flex items-center space-x-2 text-2xl lg:text-4xl font-semibold">
@@ -224,7 +224,7 @@ const EducationComponent:React.FC<AboutProps> = ({ theme }) => {
 const SkillsComponent:React.FC<AboutProps> = ({ theme }) => {
   return (
     <div className={`w-full h-full space-y-8 text-[var(--theme-300)]
-      ${theme === "light" ? "text-[var(--theme-300)]" : "text-[var(--theme-500)]"}`}
+      ${theme === "light" ? "text-[var(--theme-500)]" : "text-[var(--theme-300)]"}`}
     >
       <article className="space-y-4 text-lg lg:text-xl">
         <div className="flex items-center space-x-2 text-2xl lg:text-4xl font-semibold">
@@ -316,9 +316,9 @@ const About:React.FC<AboutProps> = ({ theme }) => {
 
         <article className="w-full h-full flex-1 overflow-hidden lg:overflow-visible px-4 lg:px-0">
           <div className="w-full h-full border-y border-[var(--theme-200)] py-2 overflow-y-auto">
-            {activeSection === "Education" && <EducationComponent />}
-            {activeSection === "Skills" && <SkillsComponent />}
-            {activeSection === "Personal" && <PersonalComponent />}
+            {activeSection === "Education" && <EducationComponent theme={theme} />}
+            {activeSection === "Skills" && <SkillsComponent theme={theme} />}
+            {activeSection === "Personal" && <PersonalComponent theme={theme} />}
           </div>
         </article>
       </section>
