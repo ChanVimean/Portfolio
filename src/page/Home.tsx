@@ -69,7 +69,7 @@ const Home:React.FC<HomeProps> = ({ theme }) => {
       <div className="w-full h-4/5 lg:h-auto lg:w-3/5">
         <HomeSection theme={theme} />
       </div>
-      <div className="w-full h-1/5 lg:w-2/5 lg:h-auto lg:py-48 lg:pe-16 overflow-hidden">
+      <div className="w-full h-1/5 lg:w-2/5 lg:h-auto lg:py-36 lg:pe-16 overflow-hidden">
         <img
           src="Tony_Stark.jpg"
           alt="Home Banner"
