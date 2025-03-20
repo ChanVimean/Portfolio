@@ -9,12 +9,12 @@ interface HomeProps {
 // ? HomeSection Component
 const HomeSection:React.FC<HomeProps> = ({ theme }) => {
   return (
-    <main className="flex flex-col w-full h-full items-center lg:p-28">
-      <article className="flex flex-col w-full h-full justify-center items-center lg:items-start font-bold space-y-2 p-4 md:p-8">
-        <h3 className="text-md md:text-2xl lg:text-3xl">Hey I'm Chan Vimean</h3>
-        <h1 className="text-2xl md:text-4xl lg:text-5xl">Full-Stack Developer &</h1>
-        <h1 className="text-2xl md:text-4xl lg:text-5xl">UX/UI Designer</h1>
-        <h3 className="text-md md:text2xl lg:text-3xl">Innovating through design, refining through code.</h3>
+    <main className="flex flex-col w-full h-full items-center justify-center lg:p-28">
+      <article className="flex flex-col w-full h-full justify-center items-center lg:items-start font-bold space-y-1 md:space-y-2 p-4 md:p-8">
+        <h3 className="text-md md:text-2xl">Hey I'm Chan Vimean</h3>
+        <h1 className="text-2xl md:text-4xl">Full-Stack Developer &</h1>
+        <h1 className="text-2xl md:text-4xl">UX/UI Designer</h1>
+        <h3 className="text-md md:text-2xl">Innovating through design, refining through code.</h3>
         <div className="flex items-center space-x-2 text-md md:text-lg lg:text-xl">
           <span className="underline">Work flow:</span>
           Inspiration
@@ -25,7 +25,7 @@ const HomeSection:React.FC<HomeProps> = ({ theme }) => {
           <span className="mx-1 md:mx-2"><FaArrowRightLong /></span>
           Deploy
         </div>
-        <div className="flex mt-6 space-x-6 text-sm md:text-2xl">
+        <div className="flex mt-6 space-x-6 text-lg md:text-2xl">
           <button className={`flex items-center px-6 py-2 rounded-full border-4
             shadow-md cursor-pointer
             ${theme === "light"
@@ -61,7 +61,7 @@ const HomeSection:React.FC<HomeProps> = ({ theme }) => {
 const Home:React.FC<HomeProps> = ({ theme }) => {
   return (
     <div className="w-screen h-screen flex flex-col-reverse lg:flex-row">
-      <div className="w-full h-4/5 lg:h-auto lg:w-3/5 py-16 md:py-36 lg:py-0">
+      <div className="w-full h-4/5 lg:h-auto lg:w-3/5 py-16 md:py-36">
         <HomeSection theme={theme} />
       </div>
       <div className="w-full h-1/5 lg:w-2/5 lg:h-auto lg:py-48 lg:pe-16 overflow-hidden">
