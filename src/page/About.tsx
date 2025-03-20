@@ -3,7 +3,6 @@ import { FaRegCirclePlay } from "react-icons/fa6"
 import { GhostButton, SkyButton, SpaceButton } from "../components/Buttons"
 
 
-
 interface AboutProps {
   theme: "light" | "dark"
 }
