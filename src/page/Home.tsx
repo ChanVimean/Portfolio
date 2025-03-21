@@ -1,13 +1,10 @@
 import { FaArrowRight, FaFacebook, FaGithub, FaLinkedin, FaTelegram } from "react-icons/fa"
 import { FaArrowRightLong } from "react-icons/fa6"
+import { AquaPress, RetroPress } from "../components/Buttons"
 
-
-interface HomeProps {
-  theme: "light" | "dark"
-}
 
 // ? HomeSection Component
-const HomeSection:React.FC<HomeProps> = ({ theme }) => {
+const HomeSection = () => {
   return (
     <div className="w-full h-full lg:p-28">
       <main className="flex flex-col w-full h-full justify-center items-center
@@ -31,23 +28,8 @@ const HomeSection:React.FC<HomeProps> = ({ theme }) => {
         </article>
 
         <section className="flex space-x-6 text-lg md:text-2xl">
-          <button className={`flex items-center px-6 py-2 rounded-full border-4
-            shadow-md cursor-pointer
-            ${theme === "light"
-              ? "text-[var(--theme-100)] bg-[var(--theme-500)] border-[var(--theme-200)] hover:opacity-90 duration-150 ease-in-out active:opacity-80"
-              : "text-[var(--theme-500)] bg-transparentborder-[var(--theme-500)] hover:bg-[var(--theme-100)] hover:opacity-90 duration-150 ease-in active:bg-[var(--theme-200)]"}`}
-          >
-            Get Start
-            <span className="ms-2"><FaArrowRight /></span>
-          </button>
-          <button className={`flex items-center px-4 py-2 rounded-full border-4
-            shadow-md cursor-pointer text-[var(--theme-100)]
-            ${theme === "light"
-              ? "bg-[var(--theme-400)] border-[var(--theme-200)] hover:bg-[var(--theme-300)] duration-150 ease-in-out active:bg-[var(--theme-400)]"
-              : "bg-[var(--theme-300)] border-[var(--theme-300)] hover:opacity-90 duration-150 ease-in-out active:bg-[var(--theme-500)]"}`}
-          >
-            Resume
-          </button>
+          <RetroPress text="Get Start" icon={<FaArrowRight />} />
+          <AquaPress text="Resume" />
         </section>
 
         <section className="mb-20 lg:mb-0">
@@ -63,11 +45,11 @@ const HomeSection:React.FC<HomeProps> = ({ theme }) => {
   )
 }
 
-const Home:React.FC<HomeProps> = ({ theme }) => {
+const Home = () => {
   return (
     <div className="w-screen h-screen flex flex-col-reverse lg:flex-row">
       <div className="w-full h-4/5 lg:h-auto lg:w-3/5">
-        <HomeSection theme={theme} />
+        <HomeSection />
       </div>
       <div className="w-full h-1/5 lg:w-2/5 lg:h-auto lg:py-36 lg:pe-16 overflow-hidden">
         <img

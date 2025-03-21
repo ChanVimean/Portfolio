@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { FaRegCirclePlay } from "react-icons/fa6"
-import { GhostButton, SkyButton, SpaceButton } from "../components/Buttons"
+import { NeonEdgePress } from "../components/Buttons"
 
 
 interface AboutProps {
@@ -32,15 +32,18 @@ const ProfileComponent:React.FC<ProfileProps> = ({ theme, activeSection, setActi
 
       {/* Navigation Buttons on PC */}
       <section className="hidden lg:flex space-x-4 font-semibold text-lg">
-        <button onClick={() => setActiveSection("Education")}>
-          <SpaceButton theme={theme} title={"Education"} />
-        </button>
-        <button onClick={() => setActiveSection("Skills")}>
-          <SkyButton theme={theme} title={"Skills"} />
-        </button>
-        <button onClick={() => setActiveSection("Personal")}>
-          <GhostButton theme={theme} title={"Personal"} />
-        </button>
+        <NeonEdgePress
+          text="Education"
+          colorVarient="primary"
+          onClick={() => setActiveSection("Education")} />
+        <NeonEdgePress
+          text="Skills"
+          colorVarient="secondary"
+          onClick={() => setActiveSection("Skills")} />
+        <NeonEdgePress
+          text="Personal"
+          colorVarient="tertiary"
+          onClick={() => setActiveSection("Personal")} />
       </section>
 
       {/* Navigation Buttons on Mobile x Tablet */}

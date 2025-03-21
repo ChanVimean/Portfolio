@@ -1,51 +1,57 @@
+import styles from "../styles/Button.module.css"
+
 interface ButtonsProps {
-  theme: "light" | "dark"
-  title: string
+  text: string,
+  icon?: React.ReactNode
+  onClick?: () => void
 }
 
-const classProperties: string = "cursor-pointer rounded-full px-4 py-2 border-4 duration-150 ease-in-out shadow-lg"
+interface ButtonColor extends ButtonsProps {
+  colorVarient?: "primary" | "secondary" | "tertiary"
+}
 
 
-export const SpaceButton:React.FC<ButtonsProps> = ({ theme, title }) => {
+// ? Physical Press: Solid Color
+export const RetroPress:React.FC<ButtonsProps> = ({ text, icon, onClick }) => {
   return (
-    <div
-      className={`
-        text-[var(--theme-100)] border-[var(--theme-300)] hover:opacity-90 active:opacity-80
-        ${classProperties}
-        ${theme === "light"
-          ? "bg-[var(--theme-500)]"
-          : "bg-[var(--theme-300)]"
-    }`}>
-      {title}
-  </div>
+    <button
+      className={styles.RetroPress}
+      onClick={onClick}
+    >
+      <div className="flex items-center justify-center space-x-2">
+        <span>{text}</span>
+        {icon && <span>{icon}</span>}
+      </div>
+    </button>
   )
 }
 
-export const SkyButton:React.FC<ButtonsProps> = ({ theme, title }) => {
+// ? Physical Press: Solid Color Blue
+export const AquaPress:React.FC<ButtonsProps> = ({ text, icon, onClick }) => {
   return (
-    <div
-      className={`
-        bg-[var(--theme-400)]
-        ${classProperties}
-        ${theme === "light"
-          ? "text-[var(--theme-100)] border-[var(--theme-200)] hover:bg-[var(--theme-300)] active:bg-[var(--theme-400)]"
-          : "text-[var(--theme-500)] border-[var(--theme-500)] hover:opacity-90 active:opacity-100"
-    }`}>
-      {title}
-    </div>
+    <button
+      className={styles.AquaPress}
+      onClick={onClick}
+    >
+      <div className="flex items-center justify-center space-x-2">
+        <span>{text}</span>
+        {icon && <span>{icon}</span>}
+      </div>
+    </button>
   )
 }
 
-export const GhostButton:React.FC<ButtonsProps> = ({ theme, title }) => {
+// ? NeonEdgePress
+export const NeonEdgePress:React.FC<ButtonColor> = ({ text, icon, onClick, colorVarient = "primary" }) => {
   return (
-    <div
-      className={`
-        ${classProperties}
-        ${theme === "light"
-          ? "bg-[var(--theme-100)] border-[var(--theme-200)] hover:opacity-80 active:opacity-100"
-          : "bg-transparent border-[var(--theme-500)] hover:opacity-80 active:bg-[var(--theme-200)]"
-    }`}>
-      {title}
-    </div>
+    <button
+      className={`${styles.NeonEdgePress} ${styles[colorVarient]}`}
+      onClick={onClick}
+    >
+      <div className="flex items-center justify-center space-x-2">
+        <span>{text}</span>
+        {icon && <span>{icon}</span>}
+      </div>
+    </button>
   )
 }
