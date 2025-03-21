@@ -42,10 +42,10 @@ export const AquaPress:React.FC<ButtonsProps> = ({ text, icon, onClick }) => {
 }
 
 // ? NeonEdgePress
-export const NeonEdgePress:React.FC<ButtonColor> = ({ text, icon, onClick, colorVarient = "primary" }) => {
+export const JellyPress:React.FC<ButtonColor> = ({ text, icon, onClick, colorVarient = "primary" }) => {
   return (
     <button
-      className={`${styles.NeonEdgePress} ${styles[colorVarient]}`}
+      className={`${styles.JellyPress} ${styles[colorVarient]}`}
       onClick={onClick}
     >
       <div className="flex items-center justify-center space-x-2">

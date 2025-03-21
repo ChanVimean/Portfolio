@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { FaRegCirclePlay } from "react-icons/fa6"
-import { NeonEdgePress } from "../components/Buttons"
+import { JellyPress } from "../components/Buttons"
 
 
 interface AboutProps {
@@ -32,15 +32,15 @@ const ProfileComponent:React.FC<ProfileProps> = ({ theme, activeSection, setActi
 
       {/* Navigation Buttons on PC */}
       <section className="hidden lg:flex space-x-4 font-semibold text-lg">
-        <NeonEdgePress
+        <JellyPress
           text="Education"
           colorVarient="primary"
           onClick={() => setActiveSection("Education")} />
-        <NeonEdgePress
+        <JellyPress
           text="Skills"
           colorVarient="secondary"
           onClick={() => setActiveSection("Skills")} />
-        <NeonEdgePress
+        <JellyPress
           text="Personal"
           colorVarient="tertiary"
           onClick={() => setActiveSection("Personal")} />
