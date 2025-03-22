@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { FaRegCirclePlay } from "react-icons/fa6"
+import { JellyGlowPress } from "../components/Buttons"
+import { IoIosArrowForward } from "react-icons/io"
 
 // TODO: Interface
 interface ProjectStructureProps {
@@ -132,14 +134,12 @@ const ProjectComponent: React.FC<ProjectComponentProps> = ({ image, alt, project
                   src={image}
                   alt={alt}
                   className="w-full h-full object-fit-cover -z-50 transition-all brightness-50" />
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-                      px-4 py-2 text-lg font-semibold rounded-md bg-blue-400 
-                    hover:bg-blue-300 active:bg-blue-400 shadow-md"
-                >
-                  Live Preview
+                <a
+                  href={project.link}
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <JellyGlowPress
+                    text="Live Preview"
+                    icon={<IoIosArrowForward />} />
                 </a>
               </>
             ) : (
