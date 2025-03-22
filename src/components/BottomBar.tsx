@@ -1,33 +1,36 @@
 import { HiMiniHome, HiMiniDocumentText  } from "react-icons/hi2"
 import { BiSolidInfoSquare, BiSolidContact } from "react-icons/bi"
 import { AiFillProduct } from "react-icons/ai"
+import styles from "../styles/BottomBar.module.css"
 
 interface BottomBarProps {
-  sections: string[]
-  theme: "light" | "dark"
+  sections: string[],
   handleScroll: (index: number) => void
 }
 
-const BottomBar: React.FC<BottomBarProps> = ({sections, theme, handleScroll}) => {
+
+const BottomBar: React.FC<BottomBarProps> = ({sections, handleScroll}) => {
 
   const icons = [HiMiniHome, BiSolidInfoSquare, AiFillProduct, BiSolidContact, HiMiniDocumentText]
 
   return (
-    <div className={`${theme === "light" ? "bg-[var(--theme-400)]" : "bg-[var(--theme-100)]"}
-                    fixed lg:hidden bottom-0 w-full px-6 py-2 md:px-16`}
-    >
-      <ul className="flex justify-between space-x-3">
+    <div className="flex justify-center fixed lg:hidden bottom-0 w-full h-20 md:h-28 px-4 py-2 md:px-16">
+      <ul className={`
+        w-full h-full bg-[var(--theme-200)]
+        ${styles.buttonContainer}
+      `}>
         {
-          sections.map((section, index) => {
+          sections.map((text, index) => {
             const IconComponent = icons[index]
             return (
               <li
-                key={section}
-                className="flex flex-col items-center"
+                key={text}
                 onClick={() => handleScroll(index)}
               >
-                <IconComponent className="text-4xl" />
-                <span className="text-md font-medium mt-1">{section}</span>
+                <button className={styles.button}>
+                  <IconComponent className="text-4xl md:text-6xl" />
+                  {/* <span className="text-md font-medium mt-1">{text}</span> */}
+                </button>
               </li>
             )
           })

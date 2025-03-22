@@ -73,7 +73,6 @@ const App: React.FC = () => {
         />
         <BottomBar
           sections={sections.map((s) => s.name)}
-          theme={theme}
           handleScroll={handleScrollTo}
         />
       </nav>
