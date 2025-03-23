@@ -27,14 +27,19 @@ const NavBar: React.FC<NavBarProps> = ({sections, theme, toggleTheme, handleScro
           {
             sections.map((section, index) => (
               <li key={section}>
-                <button onClick={() => handleScroll(index)}>{section}</button>
+                <button
+                  onClick={() => handleScroll(index)}
+                  className="cursor-pointer duration-150 ease-in-out hover:text-[var(--theme-400)] active:text-[var(--theme-500)]"
+                >
+                  {section}
+                </button>
               </li>
             ))
           }
           <li className="border-2 px-1 rounded-md">
-            <button>Login</button>
+            <button className="cursor-pointer duration-150 ease-in-out hover:text-[var(--theme-400)] active:text-[var(--theme-500)]">Login</button>
             <span className="mx-1">/</span>
-            <button>Register</button>
+            <button className="cursor-pointer duration-150 ease-in-out hover:text-[var(--theme-400)] active:text-[var(--theme-500)]">Register</button>
           </li>
         </ul>
       </section>

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { FaRegCirclePlay } from "react-icons/fa6"
-import { JellyGlowPress } from "../components/Buttons"
+import { JellyGlowPress, JellyPress } from "../components/Buttons"
 import { IoIosArrowForward } from "react-icons/io"
 
 // TODO: Interface
@@ -187,17 +187,14 @@ const Projects = () => {
         </section>
 
         {/* Middle */}
-        <section className="flex justify-center space-x-2">
-          <button
-            onClick={nextBtn}
-          >
-            Previous
-          </button>
-          <button
-            onClick={prevBtn}
-          >
-            Next
-          </button>
+        <section className="flex justify-center space-x-4">
+          <JellyPress
+            text="Previous"
+            onClick={prevBtn} />
+          <JellyPress
+            text="Next"
+            colorVarient="secondary"
+            onClick={nextBtn} />
         </section>
 
         {/* Bottom */}
