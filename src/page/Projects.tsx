@@ -1,9 +1,15 @@
-import { useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { FaRegCirclePlay } from "react-icons/fa6"
 import { JellyGlowPress, JellyPress } from "../components/Buttons"
 import { IoIosArrowForward } from "react-icons/io"
+import styles from "../styles/Projects.module.css"
+
 
 // TODO: Interface
+interface ProjefctsProp {
+  theme: "light" | "dark"
+}
+
 interface ProjectStructureProps {
   title: string,
   description: string,
@@ -89,22 +95,23 @@ const ProjectIntel: ProjectStructureProps[] = [
 ]
 
 
+
 // ? Project Structure Component
 const ProjectStructure = ({ project }: { project:  ProjectStructureProps}) => {
   return (
     <section className="w-full h-full">
       <div className="flex items-center justify-start space-x-2">
-        <FaRegCirclePlay className="text-2xl lg:text-3xl" />
+        <FaRegCirclePlay className="text-xl lg:text-2xl" />
         <h1 className="text-lg md:text-xl lg:text-2xl font-bold">
           {project.title}
         </h1>
       </div>
 
       {/* Main Paragraph */}
-      <p>{project.description}</p>
+      <p className="text-sm md:text-md lg:text-lg">{project.description}</p>
 
       {/* List of Technologies & Demo Link + Last line */}
-      <div className="space-y-6">
+      <div className="space-y-6 text-sm md:text-md lg:text-lg">
         <ul>
           {project.technologies.map((tech, index) => 
             <li key={index}>{tech}</li>
@@ -124,7 +131,7 @@ const ProjectStructure = ({ project }: { project:  ProjectStructureProps}) => {
 // ? Image Component
 const ProjectComponent: React.FC<ProjectComponentProps> = ({ image, alt, project }) => {
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-center">
+    <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 items-center justify-center">
       <section className="w-full lg:w-1/2 flex justify-center">
         <div className="w-full md:w-4/5 h-52 md:h-80 lg:h-96 relative border-4 border-[var(--theme-200)] rounded-xl overflow-hidden">
           {
@@ -151,31 +158,50 @@ const ProjectComponent: React.FC<ProjectComponentProps> = ({ image, alt, project
         </div>
       </section>
 
-      <article className="w-full lg:w-1/2 space-y-2 px-10 text-sm md:text-md lg:text-lg font-medium">
+      <article className="w-full lg:w-1/2 space-y-2 text-sm md:text-md lg:text-lg font-medium border-y-2 border-[var(--theme-200)]">
         <div className="w-full">
           <button className="text-lg lg:text-2xl font-semibold opacity-75">Skip</button>
         </div>
-        <ProjectStructure project={project} />
+        <div className="overflow-hidden overflow-y-auto h-64 md:h-72 lg:h-80">
+          <ProjectStructure project={project} />
+        </div>
       </article>
     </div>
   )
 }
 
 
-const Projects = () => {
+const checkpoints: number[] = [0, 25, 50, 75, 100]
+
+const Projects:React.FC<ProjefctsProp> = ({ theme }) => {
+  
+  const checkPointText = useMemo(() => [
+    "Processing... | 0%",
+    "Processing... | 25%",
+    "Processing... | 50%",
+    "Processing... | 75%",
+    "100%"
+  ], [])
 
   const [currentIndex, setCurrentIndex] = useState<number>(0)
+  const [progress, setProgress] = useState(checkpoints[0])
+  const [cpText, setCpText] = useState(checkPointText[0])
 
   const nextBtn = () => {
-    setCurrentIndex((prev) => (prev === 0 ? projectImages.length - 1 : prev - 1))
-  }
-
-  const prevBtn = () => {
     setCurrentIndex((prev) => (prev + 1) % projectImages.length)
   }
 
+  const prevBtn = () => {
+    setCurrentIndex((prev) => (prev === 0 ? projectImages.length - 1 : prev - 1))
+  }
+
+  useEffect(() => {
+    setProgress(checkpoints[currentIndex])
+    setCpText(checkPointText[currentIndex])
+  }, [currentIndex, checkPointText])
+
   return (
-    <div className="w-screen h-screen overflow-hidden py-36 px-4 md:px-8 lg:py-36 lg:px-20">
+    <div className="w-screen h-screen overflow-hidden py-28 lg:py-36 lg:px-20 px-4 md:px-8">
       <main className="w-full h-full space-y-10">
 
         {/* Top */}
@@ -187,7 +213,7 @@ const Projects = () => {
         </section>
 
         {/* Middle */}
-        <section className="flex justify-center space-x-4">
+        <section className="w-full flex justify-center space-x-4">
           <JellyPress
             text="Previous"
             onClick={prevBtn} />
@@ -198,8 +224,20 @@ const Projects = () => {
         </section>
 
         {/* Bottom */}
-        <section>
-
+        <section className="w-4/5 mx-auto space-y-2">
+          <div className={styles.loaderBar}>
+            <div
+              className={styles.barFill}
+              style={{
+                width: `${progress}%`,
+                transition: "width 0.5s ease-in-out"
+              }} />
+          </div>
+          <h2 className={`font-semibold text-md md:text-lg
+            ${theme === "light" ? "text-[var(--theme-500)]" : "text-[var(--theme-300)]"}
+          `}>
+            {cpText}
+          </h2>
         </section>
       </main>
     </div>
