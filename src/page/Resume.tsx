@@ -1,11 +1,13 @@
-import { JSX, useRef, useState } from "react"
+import { JSX, useEffect, useState } from "react"
 import { CiAt } from "react-icons/ci"
-import { IoIosPin } from "react-icons/io"
+import { IoIosPin, IoLogoNodejs, IoMdPerson } from "react-icons/io"
 import { LuPhone } from "react-icons/lu"
 import { FaScrewdriverWrench, FaSchool, FaArrowUpWideShort, FaArrowDownShortWide   } from "react-icons/fa6"
 import { GiOpenBook } from "react-icons/gi"
 import { IoSchool, IoPersonSharp } from "react-icons/io5"
-
+import { FaPhoneAlt, FaReact } from "react-icons/fa"
+import { SiAdobephotoshop, SiAdobepremierepro, SiCanva, SiExpress, SiMysql, SiTypescript } from "react-icons/si"
+import { BiLogoFigma, BiLogoMongodb } from "react-icons/bi"
 
 
 // TODO: Interface
@@ -13,9 +15,9 @@ interface ResumeProps {
   theme: "light" | "dark",
 }
 
-type ContactType = {
-  icon: JSX.Element,
-  text: string
+type SectionProps = {
+  name: string,
+  component: JSX.Element
 }
 
 type StructureType = {
@@ -30,24 +32,26 @@ type StructureDataType = {
   description: string
 }
 
-interface QuickScrollProps extends ResumeProps {
+interface DropDownProps extends ResumeProps {
   scrollTo: (index: number) => void,
+  isMobile: boolean
 }
 
 
 // TODO: Mini Components
 // ? Dropdown Quick Scroll-To
-const QuickScroll: React.FC<QuickScrollProps> = ({ theme, scrollTo }) => {
+const Dropdown: React.FC<DropDownProps> = ({ theme, scrollTo, isMobile }) => {
 
   const [openDropdown, setOpenDropdown] = useState<boolean>(false)
 
   const icons: {icon: JSX.Element; text: string}[] = [
     { text: "Profile", icon: <IoPersonSharp /> },
-    { text: "Skills", icon: <FaScrewdriverWrench /> },
     { text: "Edu", icon: <IoSchool /> },
     { text: "Courses", icon: <FaSchool /> },
     { text: "Ref", icon: <GiOpenBook /> }
   ]
+
+  const filteredIcons = icons.filter(item => item.text !== "Profile" || isMobile)
 
   // ? From Uiverse.io by 3bdel3ziz-T
   return (
@@ -71,19 +75,17 @@ const QuickScroll: React.FC<QuickScrollProps> = ({ theme, scrollTo }) => {
           : "opacity-0 -translate-y-4 max-h-0"}
       `}>
         <article className="w-full rounded-sm shadow-lg shadow-black/15 bg-[var(--theme-100)] overflow-hidden">
-          { icons.map((data, index) =>
+          { filteredIcons.map((data, index) =>
             <button
               key={index}
               onClick={() => scrollTo(index)}
-              className={`w-full flex items-center justify-center p-2 cursor-pointer
+              className={`w-full flex items-center justify-center p-2 cursor-pointer bg-[var(--theme-100)]
                 text-[var(--theme-500)] ease-in-out duration-150 hover:scale-105 active:scale-95
-                ${theme === "light"
-                  ? "bg-[var(--theme-100)] active:bg-cyan-100"
-                  : "bg-[var(--theme-400)] active:bg-sky-500"}`}
-              >
+                ${theme === "light" ? "active:bg-cyan-100" : "active:bg-sky-500"}`}
+            >
               <div className="flex flex-col items-center justify-center" >
                 {data.icon}
-                <span className={``}>{data.text}</span>
+                <span>{data.text}</span>
               </div>
             </button>
           )}
@@ -98,31 +100,47 @@ const QuickScroll: React.FC<QuickScrollProps> = ({ theme, scrollTo }) => {
 // ? Profile-Side
 const Profile = () => {
 
-  const contactInfo: ContactType[] = [
+  const contactInfo: { icon: JSX.Element, text: string }[] = [
     { icon: <LuPhone />, text: "+855 89 804 644" },
     { icon: <CiAt />, text: "vimeanchan09@gmail.com" },
     { icon: <IoIosPin />, text: "House 13E0 St.60 Khan Dangkao Phnom Penh" }
   ]
 
+  const skillsIcon: JSX.Element[] = [
+    <IoLogoNodejs />,
+    <SiTypescript />,
+    <SiExpress />,
+    <FaReact />,
+    <SiMysql />,
+    <BiLogoMongodb />,
+    <BiLogoFigma />,
+    <SiCanva />,
+    <SiAdobepremierepro />,
+    <SiAdobephotoshop />
+  ]
+
   return (
     <div className="w-full h-full">
-      <header className="w-full h-3/6 flex flex-col items-center justify-evenly">
-        <div className="w-48 h-48 rounded-full overflow-hidden">
+      <header className="w-full md:h-1/4 lg:h-1/3 flex flex-col items-center justify-center space-y-2">
+        <div className="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden">
           <img
             src="Tony_Stark.jpg"
             alt="Profile Resume"
             className="w-full h-full object-fit-cover" />
         </div>
         <section className="text-center">
-          <h2 className="text-5xl font-semibold">Chan Vimean</h2>
-          <h3 className="text-2xl">Web Full-Stack Developer & UX/UI Designer</h3>
+          <h2 className="text-2xl md:text-3xl font-semibold">Chan Vimean</h2>
+          <h3 className="text-lg md:text-xl">Web Full-Stack Developer & UX/UI Designer</h3>
         </section>
       </header>
 
-      <article className="w-full h-3/6 flex flex-col justify-evenly p-2 font-normal">
+      <article className="w-full md:h-3/4 lg:h-2/3 flex flex-col justify-evenly p-2 font-normal lg:text-md">
         {/* About me */}
         <section className="space-y-2">
-          <header className="text-xl font-semibold">About me</header>
+          <header className="flex items-center justify-center text-xl font-semibold space-x-2">
+            <IoMdPerson  />
+            <span>About me</span>
+          </header>
           <p>
             Creative and problem-solving IT student with a passion htmlFor Front-End development
             and UX/UI Design. Skilled in JavaScript, Figma, and full-stack tech, always
@@ -131,9 +149,25 @@ const Profile = () => {
           </p>
         </section>
 
+        {/* Skills */}
+        <section className="space-y-2">
+          <h1 className="flex items-center justify-center text-xl font-semibold space-x-2">
+            <FaScrewdriverWrench />
+            <span>Skills</span>
+          </h1>
+          <ul className="flex items-center justify-center space-x-3 text-2xl">
+            { skillsIcon.map((skill, index) =>
+              <li key={index}>{skill}</li>
+            )}
+          </ul>
+        </section>
+
         {/* Contact */}
         <section className="space-y-2">
-          <h1 className="text-xl font-semibold">Contact</h1>
+          <h1 className="flex items-center justify-center text-xl font-semibold space-x-2">
+            <FaPhoneAlt />
+            <span>Contact</span>
+          </h1>
           <ul className="flex flex-col justify-evenly py-2 border-y-2 border-[var(--theme-300)]">
             { contactInfo.map((contact, index) =>
               <li key={index} className="h-2/6 flex items-center space-x-2">
@@ -149,47 +183,19 @@ const Profile = () => {
 }
 
 
-// ? Skills
-const Skills = () => {
-
-  const skillsList: string[] = [
-    "React (JS & TS) | Express & Node",
-    "SQL/NOSQL MySQL & MongoDB",
-    "Figma (UX/UI) & Canva",
-    "Adobe Premier Pro",
-    "Problem-Solving & Creative Thinking"
-  ]
-
-  return (
-    <div className="w-full h-full space-y-5 text-xl font-medium">
-      <h1 className="text-4xl flex items-center justify-center space-x-3 font-semibold">
-        <FaScrewdriverWrench  />
-        <span>Skills</span>
-      </h1>
-      <hr /><br />
-      <ul className="text-start list-disc list-inside space-y-2">
-        { skillsList.map((skill, index) =>
-          <li key={index}>{skill}</li>
-        )}
-      </ul>
-    </div>
-  )
-}
-
 // ? Referances
 const Referances = () => {
-
   return (
-    <div className="w-full h-full space-y-5 text-xl font-normal">
-      <h1 className="text-4xl flex items-center justify-center space-x-3 font-semibold">
+    <div className="w-full h-full space-y-5 text-lg md:text-xl font-normal">
+      <header className="w-full flex-shrink-0 text-3xl md:text-4xl flex items-center justify-center space-x-3 font-semibold">
         <GiOpenBook />
         <span>Referances</span>
-      </h1>
-      <hr /><br />
-      <article className="flex flex-col lg:flex-row items-center justify-evenly space-y-4 lg:space-y-0">
+      </header>
+
+      <article className="w-full flex-1 flex flex-col md:flex-row items-start justify-start md:justify-evenly space-y-4 lg:space-y-0 py-2 border-y-2 border-[var(--theme-300)]">
         {/* 1st Referanec */}
         <ul className="text-start space-y-2">
-          <li className="font-semibold text-3xl">Nhanh Nhim</li>
+          <li className="font-semibold text-2xl md:text-3xl">Nhanh Nhim</li>
           <li>Director of ICT Center</li>
           <li>
             <span className="font-semibold">Phone: </span>
@@ -203,7 +209,7 @@ const Referances = () => {
 
         {/* 2nd Referanec */}
         <ul className="text-start space-y-2">
-          <li className="font-semibold text-3xl">Kung Noraksmey</li>
+          <li className="font-semibold text-2xl md:text-3xl">Kung Noraksmey</li>
           <li>Instructor of Etec Center</li>
           <li>
             <span className="font-semibold">Phone: </span>
@@ -220,18 +226,18 @@ const Referances = () => {
 }
 
 
-// ? Education
+// ? Education & Courses Structure
 const structureData: StructureType = {
   Education: [
     {
       title: "Bachelor of InhtmlFormation Technology",
       location: "Royal University of Law and Economics (RULE)",
       year: "2024-Present",
-      description: "Currently a sophomore majoring in InhtmlFormation Technology at University of Law and Economics (RULE). Learning the art of problem-solving and mastering both Front-End and Full-Stack development. RULE's strong academic foundation fuels my passion htmlFor innovative tech solutions in a fast-evolving industry."
+      description: "Currently a sophomore majoring in Information Technology at University of Law and Economics (RULE). Learning the art of problem-solving and mastering both Front-End and Full-Stack development. RULE's strong academic foundation fuels my passion htmlFor innovative tech solutions in a fast-evolving industry."
     },
     {
       title: "English GEP 12 and Diploma",
-      location: "Australia Centre htmlFor Education (ACE)",
+      location: "Australia Centre for Education (ACE)",
       year: "2019-2023",
       description: "Complated English studies at ACE, Toul TUm Poung, Phnom Penh, earning a GEP 12 certification and a Diploma of Reading. Achieved an IELTS Band 5.5, showcasing my proficiency and decication to continous language improvement."
     }
@@ -264,16 +270,15 @@ const structureData: StructureType = {
   ]
 }
 
-const Strcuture = ({ title, data }: { title: string, data: StructureDataType[] }) => {
-
+const Structure = ({ title, data }: { title: string, data: StructureDataType[] }) => {
   return (
-    <div className="w-full h-full space-y-5 text-xl font-normal overflow-hidden">
-      <h1 className="w-full h-1/6 text-4xl flex items-center justify-center space-x-3 font-semibold">
+    <div className="w-full h-full space-y-5 text-md md:text-xl font-normal overflow-hidden">
+      <header className="w-full flex-shrink-0 text-3xl lg:text-4xl flex items-center justify-center space-x-3 font-semibold">
         <IoSchool />
         <span>{title}</span>
-      </h1>
-      <hr /><br />
-      <article className="w-full h-5/6 text-start space-y-6 font-normal border-y-2 p-2 border-[var(--theme-300)] overflow-y-auto overflow-hidden">
+      </header>
+
+      <article className="w-full flex-1 py-2 overflow-y-auto text-start space-y-6 font-normal border-y-2 border-[var(--theme-300)]">
         {data.map((item, index) =>
           <section key={index} className="space-y-2">
             <h1 className="font-semibold">{item.title}</h1>
@@ -289,29 +294,34 @@ const Strcuture = ({ title, data }: { title: string, data: StructureDataType[] }
   )
 }
 
+
+
 const Resume: React.FC<ResumeProps> = ({ theme }) => {
 
-  const sectionRefs = useRef<(HTMLDivElement | null)[]>([])
-  const sections = [
-    { title: "Profile", component: Profile },
-    { title: "Skills", component: Skills },
-    { title: "Education", component: () => <Strcuture title="Education" data={structureData.Education} /> },
-    { title: "Courses", component: () => <Strcuture title="Courses" data={structureData.Courses} /> },
-    { title: "Referances", component: Referances }
+  const [activeSection, setActiveSection] = useState<number>(0)
+  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 1024)
+  const sections: SectionProps[] =  [
+    { name: "Profile", component: <Profile /> },
+    { name: "Education", component: <Structure title="Education" data={structureData.Education} /> },
+    { name: "Courses", component: <Structure title="Courses" data={structureData.Courses} /> },
+    { name: "Referances", component: <Referances /> }
   ]
 
-  // ! Remove Profile on lg (1024)
-  const quickScrollSections = sections.filter(s => s.title !== "Profile" || window.innerWidth < 1024)
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024)
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+    
+  }, [])
 
-  const scrollToSection = (index: number) => {
-    sectionRefs.current[index]?.scrollIntoView({ behavior: "smooth", block: "start" })
-  }
+  const quickScrollSections = sections.filter(s => s.name !== "Profile" || isMobile)
+  const scrollToSection = (index: number) => setActiveSection(index)
 
   return (
-    <div className="w-screen h-screen py-20 px-4 lg:p-36 overflow-hidden relative">
+    <div className="w-screen h-screen py-24 px-4 lg:p-20 overflow-hidden relative">
       {/* Quick Navigation */}
       <aside className="absolute z-20">
-        <QuickScroll theme={theme} scrollTo={scrollToSection} />
+        <Dropdown theme={theme} scrollTo={scrollToSection} isMobile={isMobile} />
       </aside>
 
       <main className="w-full h-full flex flex-col lg:flex-row">
@@ -321,12 +331,8 @@ const Resume: React.FC<ResumeProps> = ({ theme }) => {
         </section>
 
         {/* Dynamic Scroll */}
-        <section className="w-full lg:w-3/5 h-full flex flex-col p-10 text-center bg-none lg:bg-[var(--theme-200)] overflow-y-auto overflow-hidden">
-          { sections.map((item, index) =>
-            <div key={index} ref={(e) => (sectionRefs.current[index] = e)}>
-              {item.component}
-            </div>
-          )}
+        <section className="w-full lg:w-3/5 h-full flex flex-col text-center bg-none lg:bg-[var(--theme-200)] overflow-hidden">
+          { quickScrollSections[activeSection]?.component }
         </section>
 
       </main>
