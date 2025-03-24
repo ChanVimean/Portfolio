@@ -187,12 +187,12 @@ const Profile = () => {
 const Referances = () => {
   return (
     <div className="w-full h-full space-y-5 text-lg md:text-xl font-normal">
-      <header className="w-full flex-shrink-0 text-3xl md:text-4xl flex items-center justify-center space-x-3 font-semibold">
+      <header className="w-full flex-shrink-0 lg:h-1/6 text-3xl md:text-4xl flex items-center justify-center space-x-3 font-semibold">
         <GiOpenBook />
         <span>Referances</span>
       </header>
 
-      <article className="w-full flex-1 flex flex-col md:flex-row items-start justify-start md:justify-evenly space-y-4 lg:space-y-0 py-2 border-y-2 border-[var(--theme-300)]">
+      <article className="w-full flex-1 lg:h-5/6 flex flex-col md:flex-row items-start justify-start md:justify-evenly space-y-4 lg:space-y-0 py-2 border-y-2 border-[var(--theme-300)] lg:border-none">
         {/* 1st Referanec */}
         <ul className="text-start space-y-2">
           <li className="font-semibold text-2xl md:text-3xl">Nhanh Nhim</li>
@@ -272,13 +272,13 @@ const structureData: StructureType = {
 
 const Structure = ({ title, data }: { title: string, data: StructureDataType[] }) => {
   return (
-    <div className="w-full h-full space-y-5 text-md md:text-xl font-normal overflow-hidden">
-      <header className="w-full flex-shrink-0 text-3xl lg:text-4xl flex items-center justify-center space-x-3 font-semibold">
+    <div className="w-full h-full flex flex-col space-y-5 text-md md:text-xl font-normal overflow-hidden">
+      <header className="w-full flex-shrink-0 lg:h-1/6 text-3xl md:text-4xl flex items-center justify-center space-x-3 font-semibold">
         <IoSchool />
         <span>{title}</span>
       </header>
 
-      <article className="w-full flex-1 py-2 overflow-y-auto text-start space-y-6 font-normal border-y-2 border-[var(--theme-300)]">
+      <article className="w-full flex-1 lg:h-5/6 p-4 overflow-y-auto text-start space-y-6 font-normal border-y-2 border-[var(--theme-300)] lg:border-none">
         {data.map((item, index) =>
           <section key={index} className="space-y-2">
             <h1 className="font-semibold">{item.title}</h1>
@@ -293,7 +293,6 @@ const Structure = ({ title, data }: { title: string, data: StructureDataType[] }
     </div>
   )
 }
-
 
 
 const Resume: React.FC<ResumeProps> = ({ theme }) => {
@@ -326,12 +325,12 @@ const Resume: React.FC<ResumeProps> = ({ theme }) => {
 
       <main className="w-full h-full flex flex-col lg:flex-row">
         {/* Fixed on PC */}
-        <section className="hidden lg:block w-2/5 h-full bg-[var(--theme-200)]">
+        <section className="hidden lg:block w-2/5 h-full">
           <Profile />
         </section>
 
         {/* Dynamic Scroll */}
-        <section className="w-full lg:w-3/5 h-full flex flex-col text-center bg-none lg:bg-[var(--theme-200)] overflow-hidden">
+        <section className="w-full lg:w-3/5 h-full flex flex-col text-center bg-none overflow-hidden">
           { quickScrollSections[activeSection]?.component }
         </section>
 
