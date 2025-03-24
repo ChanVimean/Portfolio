@@ -201,8 +201,8 @@ const Projects:React.FC<ProjefctsProp> = ({ theme }) => {
   }, [currentIndex, checkPointText])
 
   return (
-    <div className="w-screen h-screen overflow-hidden py-28 px-4 lg:p-20 md:px-8">
-      <main className="w-full h-full flex flex-col items-center justify-center space-y-10">
+    <div className="w-screen h-screen overflow-hidden py-28 px-4 md:px-8 lg:px-20 lg:py-28">
+      <main className="w-full flex flex-col items-center justify-center space-y-8">
 
         {/* Top */}
         <section className="w-full">
