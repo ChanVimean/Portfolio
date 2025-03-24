@@ -201,8 +201,8 @@ const Projects:React.FC<ProjefctsProp> = ({ theme }) => {
   }, [currentIndex, checkPointText])
 
   return (
-    <div className="w-screen h-screen overflow-hidden py-28 lg:py-36 lg:px-20 px-4 md:px-8">
-      <main className="w-full h-full space-y-10">
+    <div className="w-screen h-screen overflow-hidden py-28 lg:p-20 px-4 md:px-8">
+      <main className="w-full h-full flex flex-col items-center justify-center space-y-10">
 
         {/* Top */}
         <section className="w-full">
@@ -234,8 +234,8 @@ const Projects:React.FC<ProjefctsProp> = ({ theme }) => {
               }} />
           </div>
           <h2 className={`font-semibold text-md md:text-lg
-            ${theme === "light" ? "text-[var(--theme-500)]" : "text-[var(--theme-300)]"}
-          `}>
+            ${theme === "light" ? "text-[var(--theme-500)]" : "text-[var(--theme-300)]"}`}
+          >
             {cpText}
           </h2>
         </section>
