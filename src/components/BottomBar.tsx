@@ -16,7 +16,7 @@ const BottomBar: React.FC<BottomBarProps> = ({sections, handleScroll}) => {
   return (
     <div className="flex justify-center fixed lg:hidden bottom-0 w-full h-20 md:h-28 px-4 py-2 md:px-16">
       <ul className={`
-        w-full h-full bg-[var(--theme-200)]
+        w-full h-full bg-[var(--theme-300)] text-[var(--theme-100)]
         ${styles.buttonContainer}
       `}>
         {

@@ -1,16 +1,16 @@
-import { JSX } from "react"
+import { JSX, useRef, useState } from "react"
 import { CiAt } from "react-icons/ci"
 import { IoIosPin } from "react-icons/io"
 import { LuPhone } from "react-icons/lu"
-import { FaScrewdriverWrench } from "react-icons/fa6"
+import { FaScrewdriverWrench, FaSchool, FaArrowUpWideShort, FaArrowDownShortWide   } from "react-icons/fa6"
 import { GiOpenBook } from "react-icons/gi"
 import { IoSchool, IoPersonSharp } from "react-icons/io5"
-import { RiSidebarFoldFill, RiSidebarUnfoldFill  } from "react-icons/ri"
+
 
 
 // TODO: Interface
 interface ResumeProps {
-  theme: "light" | "dark"
+  theme: "light" | "dark",
 }
 
 type ContactType = {
@@ -30,66 +30,82 @@ type StructureDataType = {
   description: string
 }
 
+interface QuickScrollProps extends ResumeProps {
+  scrollTo: (index: number) => void,
+}
+
 
 // TODO: Mini Components
 // ? Dropdown Quick Scroll-To
-const QuickScroll: React.FC<ResumeProps> = ({ theme }) => {
+const QuickScroll: React.FC<QuickScrollProps> = ({ theme, scrollTo }) => {
 
-  const icons = [
+  const [openDropdown, setOpenDropdown] = useState<boolean>(false)
+
+  const icons: {icon: JSX.Element; text: string}[] = [
     { text: "Profile", icon: <IoPersonSharp /> },
     { text: "Skills", icon: <FaScrewdriverWrench /> },
-    { text: "Education", icon: <IoSchool /> },
-    { text: "Courses", icon: <IoSchool /> },
-    { text: "Referances", icon: <GiOpenBook /> }
+    { text: "Edu", icon: <IoSchool /> },
+    { text: "Courses", icon: <FaSchool /> },
+    { text: "Ref", icon: <GiOpenBook /> }
   ]
 
-
+  // ? From Uiverse.io by 3bdel3ziz-T
   return (
-    <>
-      {/* From Uiverse.io by 3bdel3ziz-T */}
-      <div className="flex flex-col justify-center items-center relative transition-all duration-[450ms] ease-in-out w-16">
-        <article className="border border-solid border-gray-700 w-full ease-in-out duration-500 left-0 rounded-2xl inline-block shadow-lg shadow-black/15 bg-[var(--theme-100)] overflow-hidden">
-        {icons.map((data, index) =>
-          <button
-            key={index} 
-            className={`relative w-full h-16 p-4 rounded-xl 
-              flex items-center justify-center text-[var(--theme-500)] ease-in-out duration-150
-              hover:scale-110 active:scale-95
-              ${theme === "light"
-                ? "bg-sky-100 active:bg-gray-100"
-                : "bg-[var(--theme-400)] active:bg-sky-500"}`}
-            >
-            <input className="hidden peer" type="radio" name="path" id="dashboard" />
-            <div className="flex items-center text-2xl" >
-              {data.icon}
-              <span className={`hidden`}>{data.text}</span>
-            </div>
-          </button>
-        )}
+    <div className="space-y-2">
+      {/* Toggle Dropdown */}
+      <section
+        onClick={() => setOpenDropdown(!openDropdown)}
+        className={`w-full text-xl font-medium flex items-center justify-evenly p-2 space-x-2
+          overflow-hidden rounded-sm bg-[var(--theme-100)] cursor-pointer
+          ease-in-out duration-150 hover:scale-105 active:scale-95
+        `}
+      >
+        { openDropdown ? <FaArrowUpWideShort /> : <FaArrowDownShortWide />}
+      </section>
 
+      {/* Dropdown */}
+      <section className={`w-full flex flex-col justify-center items-center
+        transition-all duration-300 ease-in-out
+        ${openDropdown
+          ? "opacity-100 translate-y-0 max-h-[500px]"
+          : "opacity-0 -translate-y-4 max-h-0"}
+      `}>
+        <article className="w-full rounded-sm shadow-lg shadow-black/15 bg-[var(--theme-100)] overflow-hidden">
+          { icons.map((data, index) =>
+            <button
+              key={index}
+              onClick={() => scrollTo(index)}
+              className={`w-full flex items-center justify-center p-2 cursor-pointer
+                text-[var(--theme-500)] ease-in-out duration-150 hover:scale-105 active:scale-95
+                ${theme === "light"
+                  ? "bg-[var(--theme-100)] active:bg-cyan-100"
+                  : "bg-[var(--theme-400)] active:bg-sky-500"}`}
+              >
+              <div className="flex flex-col items-center justify-center" >
+                {data.icon}
+                <span className={``}>{data.text}</span>
+              </div>
+            </button>
+          )}
         </article>
-      </div>
+      </section>
 
-    </>
+    </div>
   )
 }
 
 
 // ? Profile-Side
-const Profile: React.FC<ResumeProps> = ({ theme }) => {
+const Profile = () => {
 
-  const ContactInfo: ContactType[] = [
+  const contactInfo: ContactType[] = [
     { icon: <LuPhone />, text: "+855 89 804 644" },
     { icon: <CiAt />, text: "vimeanchan09@gmail.com" },
     { icon: <IoIosPin />, text: "House 13E0 St.60 Khan Dangkao Phnom Penh" }
   ]
 
   return (
-    <div className="w-full h-full relative">
-      <aside className="absolute z-20">
-        <QuickScroll theme={theme}  />
-      </aside>
-
+    <div className="w-full h-full">
       <header className="w-full h-3/6 flex flex-col items-center justify-evenly">
         <div className="w-48 h-48 rounded-full overflow-hidden">
           <img
@@ -119,7 +135,7 @@ const Profile: React.FC<ResumeProps> = ({ theme }) => {
         <section className="space-y-2">
           <h1 className="text-xl font-semibold">Contact</h1>
           <ul className="flex flex-col justify-evenly py-2 border-y-2 border-[var(--theme-300)]">
-            { ContactInfo.map((contact, index) =>
+            { contactInfo.map((contact, index) =>
               <li key={index} className="h-2/6 flex items-center space-x-2">
                 <div className="text-lg">{contact.icon}</div>
                 <span>{contact.text}</span>
@@ -273,20 +289,44 @@ const Strcuture = ({ title, data }: { title: string, data: StructureDataType[] }
   )
 }
 
-const Resume: React.FC<ResumeProps> = ({ theme} ) => {
-  return (
-    <div className="w-screen h-screen p-36">
-      <main className="w-full h-full flex">
+const Resume: React.FC<ResumeProps> = ({ theme }) => {
 
-        <section className="w-full lg:w-2/5 h-full relative bg-[var(--theme-200)]">
-          <Profile theme={theme} />
+  const sectionRefs = useRef<(HTMLDivElement | null)[]>([])
+  const sections = [
+    { title: "Profile", component: Profile },
+    { title: "Skills", component: Skills },
+    { title: "Education", component: () => <Strcuture title="Education" data={structureData.Education} /> },
+    { title: "Courses", component: () => <Strcuture title="Courses" data={structureData.Courses} /> },
+    { title: "Referances", component: Referances }
+  ]
+
+  // ! Remove Profile on lg (1024)
+  const quickScrollSections = sections.filter(s => s.title !== "Profile" || window.innerWidth < 1024)
+
+  const scrollToSection = (index: number) => {
+    sectionRefs.current[index]?.scrollIntoView({ behavior: "smooth", block: "start" })
+  }
+
+  return (
+    <div className="w-screen h-screen py-20 px-4 lg:p-36 overflow-hidden relative">
+      {/* Quick Navigation */}
+      <aside className="absolute z-20">
+        <QuickScroll theme={theme} scrollTo={scrollToSection} />
+      </aside>
+
+      <main className="w-full h-full flex flex-col lg:flex-row">
+        {/* Fixed on PC */}
+        <section className="hidden lg:block w-2/5 h-full bg-[var(--theme-200)]">
+          <Profile />
         </section>
 
-        <section className="lg:w-3/5 h-full flex flex-col p-10 text-center bg-[var(--theme-200)] border-l-2 border-[var(--theme-300)]">
-          {/* <Skills /> */}
-          {/* <Referances /> */}
-          {/* <Strcuture title="Education" data={structureData.Education} /> */}
-          {/* <Strcuture title="Coures" data={structureData.Courses} /> */}
+        {/* Dynamic Scroll */}
+        <section className="w-full lg:w-3/5 h-full flex flex-col p-10 text-center bg-none lg:bg-[var(--theme-200)] overflow-y-auto overflow-hidden">
+          { sections.map((item, index) =>
+            <div key={index} ref={(e) => (sectionRefs.current[index] = e)}>
+              {item.component}
+            </div>
+          )}
         </section>
 
       </main>
