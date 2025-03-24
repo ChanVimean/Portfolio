@@ -114,7 +114,7 @@ const InfoComponent = () => {
 
 const Contact = () => {
   return (
-    <div className="w-screen h-screen overflow-hidden flex justify-center items-center px-4 lg:px-36">
+    <div className="w-screen h-screen overflow-hidden flex justify-center items-center px-4 lg:p-20">
       <main className="w-full h-4/5 flex flex-col justify-evenly overflow-y-auto overflow-x-hidden
         border-y-2 lg:border-none border-gray-400 space-y-10 pb-4"
       >

@@ -121,7 +121,7 @@ const Profile = () => {
 
   return (
     <div className="w-full h-full">
-      <header className="w-full md:h-1/4 lg:h-1/3 flex flex-col items-center justify-center space-y-2">
+      <header className="w-full md:h-1/4 lg:h-2/5 flex flex-col items-center justify-center space-y-2">
         <div className="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden">
           <img
             src="Tony_Stark.jpg"
@@ -134,7 +134,7 @@ const Profile = () => {
         </section>
       </header>
 
-      <article className="w-full md:h-3/4 lg:h-2/3 flex flex-col justify-evenly p-2 font-normal lg:text-md">
+      <article className="w-full md:h-3/4 lg:h-3/5 flex flex-col justify-evenly p-2 font-normal lg:text-md">
         {/* About me */}
         <section className="space-y-2">
           <header className="flex items-center justify-center text-xl font-semibold space-x-2">
