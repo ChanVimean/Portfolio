@@ -97,11 +97,9 @@ const ProfileComponent:React.FC<ProfileProps> = ({ theme, activeSection, setActi
 
 
 // ? Personal Component
-const PersonalComponent:React.FC<AboutProps> = ({ theme }) => {
+const PersonalComponent = () => {
   return (
-    <div className={`w-full h-full space-y-8
-      ${theme === "light" ? "text-[var(--theme-500)]" : "text-[var(--theme-300)]"}`}
-    >
+    <div className="w-full h-full space-y-8">
       <article className="space-y-4 text-md md:text-lgg lg:text-xl">
         <div className="flex items-center space-x-2 text-2xl lg:text-3xl font-semibold">
           <button>
@@ -157,11 +155,9 @@ const PersonalComponent:React.FC<AboutProps> = ({ theme }) => {
 
 
 // ? Education Component
-const EducationComponent:React.FC<AboutProps> = ({ theme }) => {
+const EducationComponent = () => {
   return (
-    <div className={`w-full h-full space-y-8 text-[var(--theme-300)]
-      ${theme === "light" ? "text-[var(--theme-500)]" : "text-[var(--theme-300)]"}`}
-    >
+    <div className="w-full h-full space-y-8">
       <article className="space-y-4 text-md md:text-lg lg:text-xl">
         <div className="flex items-center space-x-2 text-2xl lg:text-3xl font-semibold">
           <button>
@@ -225,11 +221,9 @@ const EducationComponent:React.FC<AboutProps> = ({ theme }) => {
 
 
 // ? Skills Component
-const SkillsComponent:React.FC<AboutProps> = ({ theme }) => {
+const SkillsComponent = () => {
   return (
-    <div className={`w-full h-full space-y-8 text-[var(--theme-300)]
-      ${theme === "light" ? "text-[var(--theme-500)]" : "text-[var(--theme-300)]"}`}
-    >
+    <div className="w-full h-full space-y-8">
       <article className="space-y-4 text-md md:text-lg lg:text-xl">
         <div className="flex items-center space-x-2 text-2xl lg:text-3xl font-semibold">
           <button>
@@ -320,9 +314,9 @@ const About:React.FC<AboutProps> = ({ theme }) => {
 
         <article className="w-full h-full flex-1 overflow-hidden lg:overflow-visible px-4 lg:px-0">
           <div className="w-full h-full border-y border-[var(--theme-200)] py-2 overflow-y-auto">
-            {activeSection === "Education" && <EducationComponent theme={theme} />}
-            {activeSection === "Skills" && <SkillsComponent theme={theme} />}
-            {activeSection === "Personal" && <PersonalComponent theme={theme} />}
+            {activeSection === "Education" && <EducationComponent />}
+            {activeSection === "Skills" && <SkillsComponent />}
+            {activeSection === "Personal" && <PersonalComponent />}
           </div>
         </article>
       </section>

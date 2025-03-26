@@ -3,8 +3,15 @@ import { FaArrowRightLong } from "react-icons/fa6"
 import { AquaPress, RetroPress } from "../components/Buttons"
 
 
+interface HomeProps {
+  aboutIndex: number,
+  resumeIndex: number,
+  handleScrollTo: (index: number) => void
+}
+
+
 // ? HomeSection Component
-const HomeSection = () => {
+const HomeSection:React.FC<HomeProps> = ({ aboutIndex, resumeIndex, handleScrollTo }) => {
   return (
     <div className="w-full h-full lg:p-28">
       <main className="flex flex-col w-full h-full justify-center items-center
@@ -28,16 +35,37 @@ const HomeSection = () => {
         </article>
 
         <section className="flex space-x-6 text-lg md:text-2xl">
-          <RetroPress text="Get Start" icon={<FaArrowRight />} />
-          <AquaPress text="Resume" />
+          <RetroPress
+            text="Get Start"
+            icon={<FaArrowRight />}
+            onClick={() => handleScrollTo(aboutIndex)} />
+          <AquaPress
+            text="Resume"
+            onClick={() => handleScrollTo(resumeIndex)} />
         </section>
 
         <section className="mb-20 lg:mb-0">
           <ul className="flex h-full w-full lg:w-1/5 justify-start items-center space-x-4 text-2xl md:text-4xl lg:text-5xl">
-            <li className="text-blue-600 cursor-pointer duration-150 ease-in-out hover:text-blue-500 active:text-blue-400"><FaFacebook /></li>
-            <li className="text-blue-500 cursor-pointer duration-150 ease-in-out hover:text-blue-400 active:text-blue-300"><FaTelegram /></li>
-            <li className="text-cyan-600 cursor-pointer duration-150 ease-in-out hover:text-cyan-500 active:text-cyan-400"><FaLinkedin /></li>
-            <li className="text-cyan-700 cursor-pointer duration-150 ease-in-out hover:text-cyan-600 active:text-cyan-500"><FaGithub /></li>
+            <li className="text-blue-600 cursor-pointer duration-150 ease-in-out hover:text-blue-500 active:text-blue-400">
+              <a href="https://www.facebook.com/vimen.chan">
+                <FaFacebook />
+              </a>
+            </li>
+            <li className="text-blue-500 cursor-pointer duration-150 ease-in-out hover:text-blue-400 active:text-blue-300">
+              <a href="https://t.me/chanvimean9">
+                <FaTelegram />
+              </a>
+            </li>
+            <li className="text-cyan-600 cursor-pointer duration-150 ease-in-out hover:text-cyan-500 active:text-cyan-400">
+              <a href="https://www.linkedin.com/in/chan-vimean-9955332a2/">
+                <FaLinkedin />
+              </a>
+            </li>
+            <li className="text-cyan-700 cursor-pointer duration-150 ease-in-out hover:text-cyan-600 active:text-cyan-500">
+              <a href="https://github.com/ChanVimean">
+                <FaGithub />
+              </a>
+            </li>
           </ul>
         </section>
       </main>
@@ -45,11 +73,14 @@ const HomeSection = () => {
   )
 }
 
-const Home = () => {
+const Home: React.FC<HomeProps> = ({ aboutIndex, resumeIndex, handleScrollTo }) => {
   return (
     <div className="w-screen h-screen flex flex-col-reverse lg:flex-row">
       <div className="w-full h-4/5 lg:h-auto lg:w-3/5">
-        <HomeSection />
+        <HomeSection
+          aboutIndex={aboutIndex}
+          resumeIndex={resumeIndex}
+          handleScrollTo={handleScrollTo} />
       </div>
       <div className="w-full h-1/5 lg:w-2/5 lg:h-auto lg:py-36 lg:pe-16 overflow-hidden">
         <img

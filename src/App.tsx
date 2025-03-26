@@ -1,4 +1,4 @@
-import { JSX, useEffect, useMemo, useRef, useState } from "react";
+import { JSX, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "./hook/useTheme";
 import useSectionObserver from "./hook/useSectionObserver";
@@ -14,8 +14,8 @@ import Projects from "./page/Projects";
 import Resume from "./page/Resume";
 
 interface Section {
-  name: string;
-  component: JSX.Element;
+  name: string,
+  component?: JSX.Element
 }
 
 const App: React.FC = () => {
@@ -26,13 +26,38 @@ const App: React.FC = () => {
 
   const sections = useMemo<Section[]>(
     () => [
-      { name: "Home", component: <Home /> },
+      { name: "Home" },
+      { name: "About" },
+      { name: "Projects" },
+      { name: "Contact" },
+      { name: "Resume" },
+    ],
+    []
+  );
+
+  // ? Find Index for Home Page
+  const aboutIndex: number = sections.findIndex(section => section.name === "About");
+  const resumeIndex: number = sections.findIndex(section => section.name === "Resume");
+
+  // ? Scroll to Distination
+  const handleScrollTo = useCallback((index: number) => {
+    if (index < 0 || index >= sections.length) return;
+    setActiveIndex(index);
+    document
+      .getElementById(sections[index].name)
+      ?.scrollIntoView({ behavior: "smooth" });
+  }, [sections]);
+
+  // ! Define components inside useMemo to avoid re-renders
+  const sectionComponents = useMemo<Section[]>(
+    () => [
+      { name: "Home", component: <Home aboutIndex={aboutIndex} resumeIndex={resumeIndex} handleScrollTo={handleScrollTo} /> },
       { name: "About", component: <About theme={theme} /> },
       { name: "Projects", component: <Projects theme={theme} /> },
       { name: "Contact", component: <Contact /> },
       { name: "Resume", component: <Resume theme={theme} /> },
     ],
-    [theme]
+    [theme, aboutIndex, resumeIndex, handleScrollTo]
   );
 
   // ? Handle Window Resize for Mobile Detection
@@ -53,26 +78,17 @@ const App: React.FC = () => {
   // ? Handle Scrolling for PC
   useScrollHandler(mainRef, activeIndex, setActiveIndex, isMobile);
 
-  // ? Scroll to Distination
-  const handleScrollTo = (index: number) => {
-    if (index < 0 || index >= sections.length) return;
-    setActiveIndex(index);
-    document
-      .getElementById(sections[index].name)
-      ?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <div className="overflow-hidden">
       <nav className="fixed top-0 left-0 w-full z-50">
         <NavBar
-          sections={sections.map((s) => s.name)}
+          sections={sectionComponents.map((s) => s.name)}
           theme={theme}
           toggleTheme={toggleTheme}
           handleScroll={handleScrollTo}
         />
         <BottomBar
-          sections={sections.map((s) => s.name)}
+          sections={sectionComponents.map((s) => s.name)}
           handleScroll={handleScrollTo}
         />
       </nav>
@@ -86,7 +102,7 @@ const App: React.FC = () => {
               : "flex overflow-hidden snap-x"
           }`}
       >
-        {sections.map((section, index) => (
+        {sectionComponents.map((section, index) => (
           <motion.section
             key={section.name}
             id={section.name}
@@ -103,7 +119,7 @@ const App: React.FC = () => {
 
       <footer className="fixed bottom-0 left-0 w-full z-50">
         <Dotted
-          sections={sections.map((s) => s.name)}
+          sections={sectionComponents.map((s) => s.name)}
           theme={theme}
           activeIndex={activeIndex}
           handleScroll={handleScrollTo}
