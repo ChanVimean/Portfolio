@@ -6,29 +6,41 @@ import { IoIosMail, IoIosPin } from "react-icons/io"
 const LinksComponent = () => {
   return (
     <section className="w-full flex-shrink-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center md:gap-10 text-md lg:text-lg font-medium">
-      <button className="h-full w-full flex flex-col items-center p-8 space-y-2 shadow-md cursor-pointer duration-150 ease-in-out bg-blue-400 hover:bg-blue-500 active:bg-blue-300">
+      <a
+        href="https://chat.google.com/"
+        className="h-full w-full flex flex-col items-center p-8 space-y-2 shadow-md cursor-pointer duration-150 ease-in-out bg-blue-400 hover:bg-blue-500 active:bg-blue-300"
+      >
         <IoIosMail className="text-5xl lg:text-6xl" />
         <span className="text-xl lg:text-2xl font-bold">EMAIL</span>
         <span className="underline break-all">chanvimean09@gmail.com</span>
-      </button>
+      </a>
 
-      <button className="h-full w-full flex flex-col items-center p-8 space-y-2 shadow-md cursor-pointer duration-150 ease-in-out bg-sky-500 hover:bg-sky-600 active:bg-sky-400">
+      <a
+        href="https://t.me/chanvimean9"
+        className="h-full w-full flex flex-col items-center p-8 space-y-2 shadow-md cursor-pointer duration-150 ease-in-out bg-sky-500 hover:bg-sky-600 active:bg-sky-400"
+      >
         <FaTelegramPlane className="text-5xl lg:text-6xl" />
         <span className="text-xl lg:text-2xl font-bold">TELEGRAM</span>
         <span className="underline">@chanvimean9</span>
-      </button>
+      </a>
 
-      <button className="h-full w-full flex flex-col items-center p-8 space-y-2 shadow-md cursor-pointer duration-150 ease-in-out bg-blue-300 hover:bg-blue-400 active:bg-blue-200">
+      <a
+        href="https://github.com/ChanVimean"
+        className="h-full w-full flex flex-col items-center p-8 space-y-2 shadow-md cursor-pointer duration-150 ease-in-out bg-blue-300 hover:bg-blue-400 active:bg-blue-200"
+      >
         <FaGithub className="text-5xl lg:text-6xl" />
         <span className="text-xl lg:text-2xl font-bold">GITHUB</span>
         <span>ChanVimean</span>
-      </button>
+      </a>
 
-      <button className="h-full w-full flex flex-col items-center p-8 space-y-2 shadow-md cursor-pointer duration-150 ease-in-out bg-sky-400 hover:bg-sky-500 active:bg-sky-300">
+      <a
+        href="https://www.linkedin.com/in/chan-vimean-9955332a2/"
+        className="h-full w-full flex flex-col items-center p-8 space-y-2 shadow-md cursor-pointer duration-150 ease-in-out bg-sky-400 hover:bg-sky-500 active:bg-sky-300"
+      >
         <FaLinkedin className="text-5xl lg:text-6xl" />
         <span className="text-xl lg:text-2xl font-bold">LINKEDIN</span>
         <span>Chan Vimean</span>
-      </button>
+      </a>
     </section>
   )
 }
@@ -50,27 +62,46 @@ const InfoComponent = () => {
             <li className="flex items-center space-x-2">
               <IoIosMail />
               <span>Email:</span>
-              <a href="#">yourname@email.com</a>
+              <a
+                href="https://chat.google.com/"
+                className="text-blue-500 duration-150 ease-in-out hover:text-blue-600 active:text-blue-400"
+              >
+                yourname@email.com
+              </a>
             </li>
             <li className="flex items-center space-x-2">
               <FaLinkedin />
               <h2>LinkedIn:</h2>
-              <a href="#">Chan Vimean</a>
+              <a
+                href="https://www.linkedin.com/in/chan-vimean-9955332a2/"
+                className="text-blue-500 duration-150 ease-in-out hover:text-blue-600 active:text-blue-400"
+              >
+                Chan Vimean
+              </a>
             </li>
             <li className="flex items-center space-x-2">
               <FaGithub />
               <span>Github:</span>
-              <a href="#">ChanVimean</a>
+              <a
+                href="https://github.com/ChanVimean"
+                className="text-blue-500 duration-150 ease-in-out hover:text-blue-600 active:text-blue-400"
+              >
+                ChanVimean
+              </a>
             </li>
             <li className="flex items-center space-x-2">
               <FaPhoneAlt />
               <span>Phone:</span>
-              <a href="#">090 804 644</a>
+              <span>
+                090 804 644
+              </span>
             </li>
             <li className="flex items-center space-x-2">
               <IoIosPin />
               <span>Location:</span>
-              <a href="#">Phnom Penh, Cambodia</a>
+              <span>
+                Phnom Penh, Cambodia
+              </span>
             </li>
           </ul>
         </div>

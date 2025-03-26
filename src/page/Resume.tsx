@@ -124,9 +124,9 @@ const Profile = () => {
       <header className="w-full md:h-1/4 lg:h-2/5 flex flex-col items-center justify-center space-y-2">
         <div className="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden">
           <img
-            src="Tony_Stark.jpg"
+            src="My Profile.JPG"
             alt="Profile Resume"
-            className="w-full h-full object-fit-cover" />
+            className="w-full h-full object-cover object-top" />
         </div>
         <section className="text-center">
           <h2 className="text-2xl md:text-3xl font-semibold">Chan Vimean</h2>

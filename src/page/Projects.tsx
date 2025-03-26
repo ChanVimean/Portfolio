@@ -176,11 +176,11 @@ const checkpoints: number[] = [0, 25, 50, 75, 100]
 const Projects:React.FC<ProjefctsProp> = ({ theme }) => {
   
   const checkPointText = useMemo(() => [
-    "Processing... | 0%",
-    "Processing... | 25%",
-    "Processing... | 50%",
-    "Processing... | 75%",
-    "100%"
+    "2024 | 1st Project: Sabay News Clone 📰",
+    "2025 | 2nd Project: Movie Stream 🎥",
+    "2025 | 3rd Project: Electornic Store 🛒",
+    "2025 | 4th Project: Full Stack Breakthough 🚀",
+    "2025 | 5th project: Portfolio 🌍"
   ], [])
 
   const [currentIndex, setCurrentIndex] = useState<number>(0)

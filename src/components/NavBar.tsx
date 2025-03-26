@@ -36,11 +36,11 @@ const NavBar: React.FC<NavBarProps> = ({sections, theme, toggleTheme, handleScro
               </li>
             ))
           }
-          <li className="border-2 px-1 rounded-md">
+          {/* <li className="border-2 px-1 rounded-md">
             <button className="cursor-pointer duration-150 ease-in-out hover:text-[var(--theme-400)] active:text-[var(--theme-500)]">Login</button>
             <span className="mx-1">/</span>
             <button className="cursor-pointer duration-150 ease-in-out hover:text-[var(--theme-400)] active:text-[var(--theme-500)]">Register</button>
-          </li>
+          </li> */}
         </ul>
       </section>
 
